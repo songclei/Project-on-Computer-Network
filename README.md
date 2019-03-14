@@ -2,9 +2,12 @@
 
 
 
-**authors**    Fiona0730pku   ChillySong   Tianye
+**authors**    
+\- Fiona0730pku   
+\- ChillySong   
+\- Tianye
 
-**descript**
+**description**
 
 
 
