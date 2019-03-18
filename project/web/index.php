@@ -1,5 +1,4 @@
 <?php
-    define('ROOT_DIR', trim(__DIR__, 'web'));
-    include(ROOT_DIR . "./smarty3/main.php");
-    $smarty3->display('./html/header.html');
+    include_once("../common.php");
+    $smarty3->display(WEB_ROOT . '/html/header.html');
 ?>

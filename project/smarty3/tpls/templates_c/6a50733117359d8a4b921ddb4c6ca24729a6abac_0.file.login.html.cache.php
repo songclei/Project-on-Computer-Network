@@ -1,8 +1,34 @@
+<?php
+/* Smarty version 3.1.33, created on 2019-03-18 11:18:59
+  from '/Users/songchenlei/Desktop/Project-on-Computer-Network/project/web/html/login.html' */
+
+/* @var Smarty_Internal_Template $_smarty_tpl */
+if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
+  'version' => '3.1.33',
+  'unifunc' => 'content_5c8f7ea3662bb3_93745516',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    '6a50733117359d8a4b921ddb4c6ca24729a6abac' => 
+    array (
+      0 => '/Users/songchenlei/Desktop/Project-on-Computer-Network/project/web/html/login.html',
+      1 => 1552907935,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+  ),
+),false)) {
+function content_5c8f7ea3662bb3_93745516 (Smarty_Internal_Template $_smarty_tpl) {
+$_smarty_tpl->compiled->nocache_hash = '16829373255c8f7ea363aaa8_80855324';
+?>
 <html>
 <head>
     <title>用户登录界面</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <script type="text/javascript">
+    <?php echo '<script'; ?>
+ type="text/javascript">
 	    //窗体改变大小时触发事件
 		window.onresize = setViewSize;
 		var marginLeft=0;
@@ -64,7 +90,8 @@
 				return false;
 			}
 		}
-	</script>
+	<?php echo '</script'; ?>
+>
 </head>
  
 <body onload="javascript:focusOnUsername();" >
@@ -96,4 +123,5 @@
     </div>
 	</form>
 </body>
-</html>
+</html><?php }
+}
