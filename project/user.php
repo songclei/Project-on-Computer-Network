@@ -3,6 +3,8 @@ include_once("common.php");
 
 /**
  * get user's infomation by his/her username
+ * @param username
+ * @return array|null
  */
 function getUserByUsername($username) {
     if (!isset($username)) {
@@ -10,8 +12,10 @@ function getUserByUsername($username) {
     }
 
     $conn = new mysqli(SERVERNAME, USERNAME, PASSWORD, DBNAME);
-    $sql = "select * from users where username = '$username'";
-    $result = $conn->query($sql);
+    $sql = $conn->prepare("select * from users where username = ?");
+    $sql->bind_param("s", $username);
+    $sql->execute();
+    $result = $sql->get_result();
    
     $info = null;
     if ($result->num_rows > 0) {
@@ -23,7 +27,8 @@ function getUserByUsername($username) {
 
 /**
  * check whether the user name and password consistent
- * return: status=1 if there is something wrong
+ * @param username and password
+ * @return status=1 if there is something wrong
  *         status=0 name and password consistent
  */
 function checkUser($username, $password=null) {
@@ -52,5 +57,14 @@ function checkUser($username, $password=null) {
 
     $ret['status'] = 0;
     return $ret;
+}
+
+/**
+ * register a new user 
+ * @param array consist of info
+ * @return false|true
+ */
+function addUser($params) {
+    
 }
 ?>

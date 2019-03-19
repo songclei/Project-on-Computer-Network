@@ -8,10 +8,10 @@
 
     // login success
     if ($ret['status'] === 0) {
-        $smarty3->display("./html/header.html");
+        header("Location: ./index.php"); 
     }
     // login fail
     else {
-        $smarty3->display("./html/login.html");
+        header("Location: ./login.php");
     }
 ?>

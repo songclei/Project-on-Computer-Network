@@ -59,5 +59,9 @@
 + 保持客户端登录状态
   + session
   + token
-+ 表单的一些验证，如密码、确认密码一致；密码长度；用户名… 用jst
++ 表单的一些验证，如密码、确认密码一致；密码长度；用户名… 用js
++ common.php 中WEB_ROOT改成自己电脑上的配置
++ 防止sql注入：使用预处理语句
+  + Php.ini 中 magic_quotes_gpc=on， display_errors=off
+  + 数字类型的sql字段，将str转为int
 
