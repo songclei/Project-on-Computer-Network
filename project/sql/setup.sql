@@ -11,4 +11,13 @@ CREATE TABLE IF NOT EXISTS users (
   UNIQUE (username)
 );
 
+CREATE TABLE IF NOT EXISTS activities (
+  id int(10) unsigned NOT NULL AUTO_INCREMENT,
+  name varchar(20) COLLATE utf8mb4_general_ci NOT NULL,
+  abbr varchar(20) COLLATE utf8mb4_general_ci NOT NULL,
+  begin_date date NOT NULL,
+  end_date date NOT NULL,
+  PRIMARY KEY (id)
+);
+
 commit;
