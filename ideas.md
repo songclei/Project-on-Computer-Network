@@ -1,4 +1,14 @@
-1. 下载nginx，配置nginx配置文件
+1. 环境配置
+
+**For Ubuntu**
+
+安装配置nginx+php+mysql:
+
+   https://blog.51cto.com/13791715/2161170
+
+**For mac**
+
+(1) 下载nginx，配置nginx配置文件
 
    https://segmentfault.com/a/1190000014610688
 
@@ -27,25 +37,30 @@
            }
    ```
 
-2. 安装下载php-fmp
+(2) 安装下载php-fmp
 
    https://blog.csdn.net/ivan820819/article/details/54970330
 
    https://lzw.me/a/mac-osx-php-fpm-nginx-mysql.html
 
-3. 下载smarty，将lib文件夹复制到web目录下，创建tpls目录，并在该目录下创建templates、templates_c、configs、cache目录。创建一个main.php，可以看我本地的
+(3) 下载smarty，将lib文件夹复制到web目录下，创建tpls目录，并在该目录下创建templates、templates_c、configs、cache目录。创建一个main.php，可以看我本地的
 
    代码，分隔符设置为的是{%和%}
 
    https://www.open-open.com/solution/view/1319016010156
 
-4. 安装配置MySQL 修改密码`ALTER USER 'root'@'localhost' IDENTIFIED BY 'chichichi!';`
+(4) 安装配置MySQL 修改密码`ALTER USER 'root'@'localhost' IDENTIFIED BY 'chichichi!';`
 
    ```sql
    ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password
    BY 'password';  
    ```
 
+**For Windows**
+
+http://www.nginx.cn/4514.html
+
+或使用Win10内置的WSL功能，安装Ubuntu子系统，再按Linux的方法进行安装和配置
 
 
  
