@@ -11,7 +11,7 @@
 
 ### Usage
 **How to run SQL script**<br>
-Suppose SQL script is stored in /path/to/sql/setup.sql <br>
+Suppose SQL script is stored in `/path/to/sql/setup.sql`<br>
 1. Run mysql server
 2. Enter the client, e.g.
 ```
