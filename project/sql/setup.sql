@@ -1,4 +1,5 @@
 CREATE DATABASE IF NOT EXISTS webdb;
+
 USE webdb;
 
 CREATE TABLE IF NOT EXISTS users (
@@ -11,13 +12,17 @@ CREATE TABLE IF NOT EXISTS users (
   UNIQUE (username)
 );
 
+set sql_mode='ALLOW_INVALID_DATES';
+
 CREATE TABLE IF NOT EXISTS activities (
   id int(10) unsigned NOT NULL AUTO_INCREMENT,
-  name varchar(20) COLLATE utf8mb4_general_ci NOT NULL,
-  abbr varchar(20) COLLATE utf8mb4_general_ci NOT NULL,
-  begin_date date NOT NULL,
-  end_date date NOT NULL,
-  PRIMARY KEY (id)
+  name varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
+  abbr varchar(40) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  begin_date timestamp NOT NULL,
+  end_date timestamp NOT NULL,
+  PRIMARY KEY (id),
+  UNIQUE (name)
 );
 
 commit;
+
