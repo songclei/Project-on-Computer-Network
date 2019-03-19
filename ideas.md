@@ -82,4 +82,4 @@ http://www.nginx.cn/4514.html
 + 防止sql注入：使用预处理语句
   + Php.ini 中 magic_quotes_gpc=on， display_errors=off
   + 数字类型的sql字段，将str转为int
-
++ Smarty有自动cache机制，可能会导致显示的数据与后台不同步
