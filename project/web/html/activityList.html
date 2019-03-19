@@ -1,3 +1,14 @@
-<html>
-    <>
-</html>
+{%extends file="./tpl/layout.html"%} 
+{%block name="title"%}<title>活动列表</title>{%/block%}
+
+{%block name="body"%}
+<body>
+    {%foreach $list as $activity%}
+    <li></li>
+        {%foreach $activity as $key=>$value%}
+            {%$key%}:&nbsp;{%$value%}&nbsp;
+        {%/foreach%}
+    </li>
+    {%/foreach%}
+</body>
+{%/block%}

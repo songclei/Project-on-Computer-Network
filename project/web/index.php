@@ -5,5 +5,5 @@
     $activities = getActivities();
     $list = $activities['list'];
     $smarty3->assign('list', $list);
-    $smarty3->display(WEB_ROOT . '/html/activityList.html');
+    $smarty3->display('./html/activityList.html');
 ?>

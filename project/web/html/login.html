@@ -1,16 +1,84 @@
-<!DOCTYPE html>
-<html>
-    <head>
+
+{%extends file="./tpl/layout.html"%} 
+{%block name="css"%}
     <link href="../css/form.css" rel="stylesheet" type="text/css" />
     <link href="../css/link.css" rel="stylesheet" type="text/css" />
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>用户登录界面</title>
-</head>
+{%/block%}
+    
+{%block name="title"%}<title>用户登录界面</title>{%/block%}
+    
+{%block name="javascript"%}
+    <script type="text/javascript">
+        //窗体改变大小时触发事件
+        window.onresize = setViewSize;
+        var marginLeft=0;
+        var marginTop=0;
+        //设置画布大小，登录页面显示在屏幕最中间
+        function setViewSize() {
+            //计算屏幕大小
+            var w=window.innerWidth
+            || document.documentElement.clientWidth
+            || document.body.clientWidth;
+            var h=window.innerHeight
+            || document.documentElement.clientHeight
+            || document.body.clientHeight;
+            //设置登陆div的位置
+            marginLeft = (w-468)/2 + "px";
+            marginTop = (h-262)/2 + "px";
+            var form = document.getElementById("loginFormMain");
+            form.style.marginLeft=marginLeft;
+            form.style.marginTop=marginTop;
+        }
+        
+        //默认聚焦在用户名输入框上
+        function focusOnUsername() {
+            //调整画布大小和登陆框位置
+            setViewSize();
+            //默认聚焦在输入框上
+            if (document.loginForm) {
+                var usernameInput = document.loginForm.username;
+                if (usernameInput) {
+                    usernameInput.focus();
+                }
+            }
+            return;
+        }
+    
+        //检查用户输入
+        function checkLogin(){
+            if(checkUsername() && checkPassword()){
+                return true;
+            }		  
+            return false;
+        }
+        //检查登录用户名
+        function checkUsername(){
+            var username = document.loginForm.username;
+            if(username.value.length!=0){
+                return true;
+            }else{
+                alert("请输入用户名");
+                return false;
+            }
+        }
+        //检查登录密码
+        function checkPassword(){
+            var password = document.loginForm.password;
+            if(password.value.length!=0){
+                return true;
+            }else{
+                alert("请输入密码");
+                return false;
+            }
+        }
+    </script>
+{%/block%}
 
+{%block name="body"%}
 <body onload="javascript:focusOnUsername();" background="../pictures/bg_login.jpg" >
-    <form  action="./loginAuth.php" name="loginForm" >
-    <div  id="loginFormMain">
-        <table  style="width:468px;height:262px;background-color: rgba(0, 0, 0, 0.3);text-align: center;color: white">
+    <form action="./loginAuth.php" name="loginForm" >
+    <div id="loginFormMain" style="margin-left: 0px;margin-top: 0px">
+        <table style="width:468px;height:262px;background-color: rgba(0, 0, 0, 0.3);text-align: center;color: white">
             <tr>
                 <th colspan="2" align="center">用户登录</th>
             </tr>
@@ -35,69 +103,4 @@
     </div>
     </form>
 </body>
-
-<script type="text/javascript">
-    //窗体改变大小时触发事件
-    window.onresize = setViewSize;
-    var marginLeft=0;
-    var marginTop=0;
-    //设置画布大小，登录页面显示在屏幕最中间
-    function setViewSize() {
-        //计算屏幕大小
-        var w=window.innerWidth
-        || document.documentElement.clientWidth
-        || document.body.clientWidth;
-        var h=window.innerHeight
-        || document.documentElement.clientHeight
-        || document.body.clientHeight;
-        //设置登陆div的位置
-        marginLeft = (w-468)/2;
-        marginTop = (h-262)/2;
-        document.getElementById("loginFormMain").style.marginLeft=marginLeft;
-        document.getElementById("loginFormMain").style.marginTop=marginTop;
-    }
-    
-    //默认聚焦在用户名输入框上
-    function focusOnUsername() {
-        //调整画布大小和登陆框位置
-        setViewSize();
-        //默认聚焦在输入框上
-        if (document.loginForm) {
-            var usernameInput = document.loginForm.username;
-            if (usernameInput) {
-                usernameInput.focus();
-            }
-        }
-        return;
-    }
-
-    //检查用户输入
-    function checkLogin(){
-        if(checkUsername() && checkPassword()){
-            return true;
-        }		  
-        return false;
-    }
-    //检查登录用户名
-    function checkUsername(){
-        var username = document.loginForm.username;
-        if(username.value.length!=0){
-            return true;
-        }else{
-            alert("请输入用户名");
-            return false;
-        }
-    }
-    //检查登录密码
-    function checkPassword(){
-        var password = document.loginForm.password;
-        if(password.value.length!=0){
-            return true;
-        }else{
-            alert("请输入密码");
-            return false;
-        }
-    }
-</script>
-
-</html>
+{%/block%}
