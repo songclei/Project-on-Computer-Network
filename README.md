@@ -2,15 +2,15 @@
 
 
 
-####Authors
-\- Fiona0730pku   
-\- ChillySong   
-\- Tianye
+###Authors
+- Fiona0730pku   
+- ChillySong   
+- Tianye
 
-####Description
+###Description
 
 
-####Usage
+###Usage
 **How to run SQL script**
 Suppose SQL script is stored in /path/to/sql/setup.sql
 1. Run mysql server
@@ -19,7 +19,7 @@ Suppose SQL script is stored in /path/to/sql/setup.sql
 mysql -u <Username> -p
 ```
 3. Run the SQL script
-```sql
+```
 source /path/to/sql/setup.sql
 ```
 
