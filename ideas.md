@@ -65,7 +65,8 @@ http://www.nginx.cn/4514.html
 或使用Win10内置的WSL功能，安装Ubuntu子系统，再按Linux的方法进行安装和配置
 
 
- 
+
+### 一些ideas 
 
 + 公共的header 和 footer
   + jQuery的load方法
