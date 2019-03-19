@@ -45,7 +45,7 @@
 
 (3) ~~下载smarty，将lib文件夹复制到web目录下，创建tpls目录，并在该目录下创建templates、templates_c、configs、cache目录。创建一个main.php，可以看我本地的代码，~~
     
-    smarty库已经在`project/smarty3`中，不需要重新下载，只需要修改配置文件`project/config.php`
+   smarty库已经在`project/smarty3`中，不需要重新下载，只需要修改配置文件`project/config.php`
 
    分隔符设置的是{%和%}
 
