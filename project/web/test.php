@@ -1,4 +1,15 @@
 <?php
-//    echo "My name is {$_GET[name]}, and age is {$_GET[age]}";
-    echo "User is {$_GET[user]}"
+    include_once("../user.php");
+
+/*
+    $username = $_GET[user];
+    $ret = checkUsernameUsed($username);
+    if ($ret) {
+        echo "Username " . $username . " is used";
+    } else {
+        echo "Username " . $username . " is not used";
+    }
+*/
+    echo $_GET[user];
+
 ?>

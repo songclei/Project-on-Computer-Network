@@ -26,7 +26,7 @@ function getUserByUsername($username) {
 }
 
 /**
- * check whether the username if occupied
+ * check whether the username is occupied
  * @param username
  * @return true: username is occupied
  *         false: username has not been occupied
