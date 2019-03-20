@@ -26,6 +26,22 @@ function getUserByUsername($username) {
 }
 
 /**
+ * check whether the username if occupied
+ * @param username
+ * @return true: username is occupied
+ *         false: username has not been occupied
+ */
+function checkUsernameUsed($username) {
+    $usr = getUserByUsername($username);
+    if (is_null($usr)) {
+        return false;
+    }
+    else {
+        return true;
+    } 
+}
+
+/**
  * check whether the user name and password consistent
  * @param username and password
  * @return status=1 if there is something wrong
