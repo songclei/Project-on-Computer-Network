@@ -86,12 +86,12 @@
             return true;
         }
 
-        var username = document.getElementById("userid").value;
+        
         $(document).ready(function() {
             $("#userid").change(function() {
                 $(this).css("background-color","#FFFFCC");
-                alert("hi");
-                console.log(username);
+                var username = document.getElementById("userid").value;
+                //alert("hi");
                 $.get("./test.php", {user: username}, function(msg) {
                     console.log("msg = " + msg);
                     alert("msg: " + msg);
