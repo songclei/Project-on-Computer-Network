@@ -93,15 +93,14 @@ function addUser($params) {
     $conn = new mysqli(SERVERNAME, USERNAME, PASSWORD, DBNAME);
     $sql = $conn->prepare("insert into users (username, password, email) values (?, ?, ?)");
     $sql->bind_param("sss", $username, $password, $email);
-    $sql->execute();
-    $result = $sql->get_result();
+    $result = $sql->execute();
     if ($result === true) {
         $ret['status'] = 0;
     }
     else {
         $ret['err_msg'] = $conn->error;
     }
-    
+    $conn->close();
     return $ret;
 }
 ?>
