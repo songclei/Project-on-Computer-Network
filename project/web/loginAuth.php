@@ -9,9 +9,11 @@
     // login success
     if ($ret['status'] === 0) {
         header("Location: ./index.php"); 
+        exit();
     }
     // login fail
     else {
         header("Location: ./login.php");
+        exit();
     }
 ?>

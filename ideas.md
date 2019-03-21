@@ -73,7 +73,6 @@ http://www.nginx.cn/4514.html
   + 转化成js代码，再加载进html
   + ajax
   + Django
-
 + 保持客户端登录状态
   + session
   + token
@@ -83,3 +82,4 @@ http://www.nginx.cn/4514.html
   + Php.ini 中 magic_quotes_gpc=on， display_errors=off
   + 数字类型的sql字段，将str转为int
 + Smarty有自动cache机制，可能会导致显示的数据与后台不同步
++ login里面记住密码、忘记密码

@@ -1,79 +1,26 @@
 {%extends file="./tpl/layout.html"%} 
 {%block name="css"%}
-    <link href="../css/form.css" rel="stylesheet" type="text/css" />
-    <link href="../css/link.css" rel="stylesheet" type="text/css" />
+    <link href="../css/login.css" rel='stylesheet' type='text/css' media="all">
+    <link href="../css/link.css" rel='stylesheet' type='text/css' media="all">
 {%/block%}
     
 {%block name="title"%}<title>用户登录界面</title>{%/block%}
     
 {%block name="javascript"%}
     <script type="text/javascript">
-        //窗体改变大小时触发事件
-        window.onresize = setViewSize;
-        var marginLeft=0;
-        var marginTop=0;
-        //设置画布大小，登录页面显示在屏幕最中间
-        function setViewSize() {
-            //计算屏幕大小
-            var w=window.innerWidth
-            || document.documentElement.clientWidth
-            || document.body.clientWidth;
-            var h=window.innerHeight
-            || document.documentElement.clientHeight
-            || document.body.clientHeight;
-            //设置登陆div的位置
-            marginLeft = (w-468)/2 + "px";
-            marginTop = (h-262)/2 + "px";
-            var form = document.getElementById("loginFormMain");
-            form.style.marginLeft=marginLeft;
-            form.style.marginTop=marginTop;
-        }
+
+        addEventListener("load", function () {
+            setTimeout(hideURLbar, 0); 
+        }, false); 
         
-        //默认聚焦在用户名输入框上
-        function focusOnUsername() {
-            //调整画布大小和登陆框位置
-            setViewSize();
-            //默认聚焦在输入框上
-            if (document.loginForm) {
-                var usernameInput = document.loginForm.username;
-                if (usernameInput) {
-                    usernameInput.focus();
-                }
+        function hideURLbar() { 
+                window.scrollTo(0, 1); 
             }
-            return;
-        }
-    
-        //检查用户输入
-        function checkLogin(){
-            if(checkUsername() && checkPassword()){
-                return true;
-            }		  
-            return false;
-        }
-        //检查登录用户名
-        function checkUsername(){
-            var username = document.loginForm.username;
-            if(username.value.length!=0){
-                return true;
-            }else{
-                alert("请输入用户名");
-                return false;
-            }
-        }
-        //检查登录密码
-        function checkPassword(){
-            var password = document.loginForm.password;
-            if(password.value.length!=0){
-                return true;
-            }else{
-                alert("请输入密码");
-                return false;
-            }
-        }
     </script>
 {%/block%}
 
 {%block name="body"%}
+<!--HTML
 <body onload="javascript:focusOnUsername();" background="../pictures/bg_login.jpg" >
     <form action="./loginAuth.php" name="loginForm" >
     <div id="loginFormMain" style="margin-left: 0px;margin-top: 0px">
@@ -102,4 +49,48 @@
     </div>
     </form>
 </body>
+-->
+<body>
+        <div class="mid-class">
+           <div class="art-right-w3ls">
+              <h2 style="color: rgba(31, 155, 212, 0.911)">用户登录</h2>
+              <form action="loginAuth.php" method="post">
+                 <div class="main">
+                    <div class="form-left-to-w3l">
+                       <input type="text" name="username" placeholder="用户名" required="">
+                    </div>
+                    <div class="form-left-to-w3l ">
+                       <input type="password" name="password" placeholder="密码" required="">
+                       <div class="clear"></div>
+                    </div>
+                 </div>
+                 <div class="left-side-forget">
+                    <input type="checkbox" class="checked">
+                    <span class="remenber-me">记住密码 </span>
+                 </div>
+                 <div class="right-side-forget">
+                    <a href="#" class="for">忘记密码?</a>
+                 </div>
+                 <div class="clear"></div>
+                 <div class="btnn">
+                    <button type="submit">登录</button>
+                 </div>
+              </form>
+              <div class="w3layouts_more-buttn">
+                 <h3>还没有账号？
+                    <a href="register.php">注册
+                    </a>
+                 </h3>
+              </div>
+           </div>
+           <div class="art-left-w3ls">
+              <h1 class="header-w3ls">
+                Scientific conferences & activities
+              </h1>
+           </div>
+        </div>
+        <footer class="bottem-wthree-footer">
+           <p>Copyright © 2019. Chilly & Tian & Fiona All rights reserved.</p>
+        </footer>
+      </body>
 {%/block%}

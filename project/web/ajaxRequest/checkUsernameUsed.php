@@ -5,7 +5,7 @@
     $param = empty($_GET) ? $_POST : $_GET;
     $username = $param['username'];
     if (checkUsernameUsed($username)) 
-        echo "true";
+        echo "用户名已被使用";
     else 
-        echo "false";
+        echo "";
 ?>

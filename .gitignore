@@ -1,2 +1,7 @@
+config.php
 smarty3/
+cache/
+configs/
+templates/
+templates_c/
 
