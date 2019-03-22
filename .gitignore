@@ -1,4 +1,5 @@
-project/smarty3/README
+config.php
+smarty3/
 cache/
 configs/
 templates/
