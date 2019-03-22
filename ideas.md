@@ -1,3 +1,24 @@
+### .gitignore
+
+* When you add something into a .gitignore file, try this:
+```
+git add [uncommitted changes you want to keep] && git commit
+git rm -r --cached .
+git add .
+git commit -m "fixed untracked files"
+```
+
+* If you remove something from a .gitignore file, and the above steps don't work, try this:
+```
+git add -f [files you want to track again]
+git commit -m "Refresh removing files from .gitignore file."
+
+// For example, if you want the .java type file to be tracked again,
+// The command should be:
+//     git add -f *.java
+```
+
+
 ### 环境配置
 
 **For Ubuntu**
