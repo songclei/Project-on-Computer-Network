@@ -27,7 +27,7 @@
         }
         $order = "order by id desc";
         $sql = $select . $where . $order;
-
+        
         $conn = new mysqli(SERVERNAME, USERNAME, PASSWORD, DBNAME);
         $result = $conn->query($sql);
         $ret = array(

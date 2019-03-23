@@ -4,8 +4,9 @@
 
 {%block name="body"%}
 <body>
+    hello
     {%foreach $list as $activity%}
-    <li></li>
+    <li>
         {%foreach $activity as $key=>$value%}
             {%$key%}:&nbsp;{%$value%}&nbsp;
         {%/foreach%}
