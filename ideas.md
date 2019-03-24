@@ -18,6 +18,34 @@ git commit -m "Refresh removing files from .gitignore file."
 //     git add -f *.java
 ```
 
+### activityList.html的css样式说明
+
+`style.css`:
+```css
+.content {
+      float: left;
+        padding: 1.875em;
+          width: 100%; 
+} /* 位于card类的外一层*/
+```
+
+`bootstrap.min.css`:
+```css
+.card {
+        background-color: #fff;                 /* 背景颜色 */
+        border: 1px solid rgba(0, 0, 0, .125);  /* 边框粗细、线型、颜色 */
+        border-radius: .25rem                   /* 边框四角曲率 */
+} /* 衬在表格下方的区域的属性，位于content类的内一层，table类的外一层 */
+
+.table {
+        background-color: transparent           /* 表格背景颜色 */
+} /* 表格属性，位于card类的内一层 */
+```
+
+`bootstrap.min.css`定义了几种表格类的属性，例如`table-hover`表示带有悬停效果的表格样式。只要在html的`table`标签的`class`中添加`table-hover`即可使用。一张表格可以同时属于多个类，因此这些效果可以叠加。
+
+
+
 
 ### 环境配置
 
