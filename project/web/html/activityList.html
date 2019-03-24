@@ -34,15 +34,13 @@
 											<th>End</th>
                                         </tr>
                                     </thead>
+                                    {%strip%}
 									<tbody>
-										{%foreach $list as $activity%}
-										<tr>
-											{%foreach $activity as $key=>$value%}
-												<td>{%$value%}</td>
-											{%/foreach%}
-										</tr>
-										{%/foreach%}									
+										{%foreach $list as $activity%}<tr>
+											{%foreach $activity as $key=>$value%}<td>{%$value%}</td>{%/foreach%}
+										</tr>{%/foreach%}			
 									</tbody>
+                                    {%/strip%}
                                 </table>
                             </div>
                         </div>
