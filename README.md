@@ -1,7 +1,7 @@
 # Project on Computer Network
 
 ### Authors
-\- Fiona0730pku   
+\- Fiona730   
 \- ChillySong   
 \- Tianye
 
