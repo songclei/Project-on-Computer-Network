@@ -2,7 +2,10 @@ a:link {
     color: blue);
     text-decoration: none
 }
-
+a:visited {
+    color: blueviolet;
+    text-decoration: none
+}
 a:hover {
     color: #ff7f24;
     text-decoration: underline;

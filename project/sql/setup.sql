@@ -24,14 +24,5 @@ CREATE TABLE IF NOT EXISTS activities (
   UNIQUE (name)
 );
 
-CREATE TABLE IF NOT EXISTS user_activity (
-  user_id int(10) unsigned NOT NULL,
-  activity_id int(10) unsigned NOT NULL,
-  PRIMARY KEY(user_id, activity_id),
-  extra_json varchar(100) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  FOREIGN KEY (user_id) REFERENCES users(id),
-  FOREIGN KEY (activity_id) REFERENCES activities(id) 
-);
-
 commit;
 

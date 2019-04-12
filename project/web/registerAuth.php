@@ -1,6 +1,6 @@
 <?php
-    include_once("../lib/common.php");
-    include_once("../lib/user.php");
+    include_once("../common.php");
+    include_once("../user.php");
 
     $param = $_POST;
     $ret = addUser($param);
