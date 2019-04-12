@@ -1,6 +1,6 @@
 <?php
-    include_once("../common.php");
-    include_once("../activity.php");
+    include_once("../lib/common.php");
+    include_once("../lib/activity.php");
 
     $activities = getActivities();
     $list = $activities['list'];
