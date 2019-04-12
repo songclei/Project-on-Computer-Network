@@ -1,5 +1,5 @@
 <?php
-    include_once("../user.php");
+    include_once("../lib/user.php");
 
 /*
     $username = $_GET[user];
