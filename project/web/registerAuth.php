@@ -8,6 +8,7 @@
     
     if ($ret['status'] === 0) {
         $_SESSION['username'] = $_POST['username'];
+        $_SESSION['uid'] = $ret['uid'];
         header("Location: ./index.php");
         exit();
     }

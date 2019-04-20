@@ -8,7 +8,7 @@
 
     // login success
     if ($ret['status'] === 0) {
-        $_SESSION['uid'] = $ret['id'];
+        $_SESSION['uid'] = $ret['uid'];
         $_SESSION['username'] = $username;
         header("Location: ./index.php"); 
         exit();

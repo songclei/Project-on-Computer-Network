@@ -9,6 +9,10 @@
     function getActivities($filter=array()) {
         $select = "select * from activities ";
         $where = "where true ";
+        if (!empty($filter['id'])) {
+            $id = $filter['id'];
+            $where = $where . "and id = $id ";
+        }
         if (!empty($filter['name'])) {
             $name = $filter['name'];
             $where = $where . "and name = $name ";
@@ -68,7 +72,15 @@
         
         $result = $sql->execute();
         if ($result === true) {
-            $ret['status'] = 0;
+            $activityId = $conn->insert_id;
+            $userId = $params['uid'];
+            $sql = "insert into user_activity (user_id, activity_id) values ($userId, $activityId)";
+            $result = $conn->query($sql);
+            if ($result === false) {
+                $ret['err_msg'] = $conn->error;
+            } else {
+                $ret['status'] = 0;
+            }
         }
         else {
             $ret['err_msg'] = $conn->error;

@@ -71,7 +71,6 @@ function checkUser($username, $password=null) {
         $ret['err_msg'] = 'false_password';
         return $ret;
     }
-
     $ret['status'] = 0;
     $ret['uid'] = $userInfo['id'];
     return $ret;
@@ -85,7 +84,8 @@ function checkUser($username, $password=null) {
 function addUser($params) {
     $ret = array(
         'status' => 1,
-        'err_msg' => ''
+        'err_msg' => '',
+        'uid' => -1
     );
 
     $username = $params['username'];
@@ -98,6 +98,7 @@ function addUser($params) {
     $result = $sql->execute();
     if ($result === true) {
         $ret['status'] = 0;
+        $ret['uid'] = $conn->insert_id;
     }
     else {
         $ret['err_msg'] = $conn->error;

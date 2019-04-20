@@ -2,7 +2,6 @@
 <html>
     <head>
         {%block name="css"%}
-        <link href="css/awwwards.css" rel="stylesheet" type="text/css" media="all">
         <link href="css/global.css" rel="stylesheet" type="text/css" media="all">
         {%/block%}
         <meta charset="charset=UTF-8">
@@ -26,17 +25,21 @@
                     <!-- header -->
                     <header id="header" class="bg-color" style="top: 0px; color: rgb(0, 0, 0);">
                         <ul class="menu">
-                                <a href="index.php"><li class="menu-button home ga-track" data-ga-category="main_nav" data-ga-label="activityList">活动列表</li></a>
-                                <li>•</li>
-                                <a href="addActivity.php"><li class="menu-button work ga-track" data-ga-category="main_nav" data-ga-label="createActivity">创建活动</li></a>
-                                <li>•</li>
-                                <a><li class="menu-button social ga-track" data-ga-category="main_nav" data-ga-label="social">活动管理</li></a>
+                                <a href="index.php"><li class="menu-button ga-track" data-ga-category="main_nav" data-ga-label="activityList">活动列表</li></a>
                                 <li>•</li>
                             {%if $login==false%}
-                                <a href="login.php"><li class="menu-button contact ga-track" data-ga-category="main_nav" data-ga-label="about">登录</li></a>
+                                <a href="login.php"><li class="menu-button ga-track" data-ga-category="main_nav" data-ga-label="createActivity">创建活动</li></a>
                                 <li>•</li>
-                                <a href="register.php"><li class="menu-button contact ga-track" data-ga-category="main_nav" data-ga-label="about">注册</li></a>
+                                <a href="login.php"><li class="menu-button ga-track" data-ga-category="main_nav" data-ga-label="social">活动管理</li></a>
+                                <li>•</li>
+                                <a href="login.php"><li class="menu-button ga-track" data-ga-category="main_nav" data-ga-label="about">登录</li></a>
+                                <li>•</li>
+                                <a href="register.php"><li class="menu-button ga-track" data-ga-category="main_nav" data-ga-label="about">注册</li></a>
                             {%else%}
+                                <a href="addActivity.php"><li class="menu-button ga-track" data-ga-category="main_nav" data-ga-label="createActivity">创建活动</li></a>
+                                <li>•</li>
+                                <a href="manageActivity.php"><li class="menu-button ga-track" data-ga-category="main_nav" data-ga-label="social">活动管理</li></a>
+                                <li>•</li>
                                 <li>{%$username%}</li>
                                 <a href="logout.php"><li class="menu-button contact ga-track" data-ga-category="main_nav" data-ga-label="about">注销</li></a>
                             {%/if%}

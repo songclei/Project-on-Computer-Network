@@ -1,10 +1,12 @@
 {%extends file="./tpl/layout.html"%} 
-{%block name="css"%}
-	<link href="../css/login.css" rel="stylesheet" type="text/css" />
-	<link href="../css/link.css" rel="stylesheet" type="text/css" />
-	<link href="../css/date.css" rel="stylesheet" type="text/css" />
-	<link href="html/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-	<link href="html/assets/css/bootstrap-datepicker3.min.css" rel="stylesheet" type="text/css"/>
+{%block name="css" append%}
+	<link href="css/login.css" rel="stylesheet" type="text/css" media="all">
+    <link href="css/link.css" rel="stylesheet" type="text/css" media="all">
+
+	<link rel="stylesheet" href="html/assets/css/bootstrap.min.css" type="text/css" media="all">
+    <link rel="stylesheet" href="html/assets/css/lib/datatable/dataTables.bootstrap.min.css" type="text/css" media="all">
+
+    <link rel="stylesheet" href="html/assets/css/style.css" type="text/css" media="all">
 
 {%/block%}
 	
@@ -32,7 +34,7 @@
 </script>
 {%/block%}
 
-{%block name="body"%}
+{%block name="body" append%}
 <body>
 				<div class="mid-class">
 					 <div class="art-right-w3ls">
