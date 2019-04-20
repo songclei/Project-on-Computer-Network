@@ -26,13 +26,20 @@
                     <!-- header -->
                     <header id="header" class="bg-color" style="top: 0px; color: rgb(0, 0, 0);">
                         <ul class="menu">
-                                <a href="login.php"><li class="menu-button home ga-track" data-ga-category="main_nav" data-ga-label="activityList">活动列表</li></a>
+                                <a href="index.php"><li class="menu-button home ga-track" data-ga-category="main_nav" data-ga-label="activityList">活动列表</li></a>
                                 <li>•</li>
                                 <a><li class="menu-button work ga-track" data-ga-category="main_nav" data-ga-label="createActivity">创建活动</li></a>
                                 <li>•</li>
                                 <a><li class="menu-button social ga-track" data-ga-category="main_nav" data-ga-label="social">活动管理</li></a>
                                 <li>•</li>
-                                <a><li class="menu-button contact ga-track" data-ga-category="main_nav" data-ga-label="about">about</li></a>
+                            {%if $login==false%}
+                                <a href="login.php"><li class="menu-button contact ga-track" data-ga-category="main_nav" data-ga-label="about">登录</li></a>
+                                <li>•</li>
+                                <a href="register.php"><li class="menu-button contact ga-track" data-ga-category="main_nav" data-ga-label="about">注册</li></a>
+                            {%else%}
+                                <li>{%$username%}</li>
+                                <a href="logout.php"><li class="menu-button contact ga-track" data-ga-category="main_nav" data-ga-label="about">注销</li></a>
+                            {%/if%}
                         </ul>
                     </header>
                     <canvas id="canvas" width="1324" height="839" style="height: 432px; width: 100%; top: 0px; left: 0px; visibility: hidden; opacity: 0;"></canvas>
