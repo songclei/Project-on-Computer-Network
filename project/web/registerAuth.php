@@ -9,6 +9,7 @@
     if ($ret['status'] === 0) {
         $_SESSION['username'] = $_POST['username'];
         $_SESSION['uid'] = $ret['uid'];
+        $_SESSION['role'] = 0;
         header("Location: ./index.php");
         exit();
     }

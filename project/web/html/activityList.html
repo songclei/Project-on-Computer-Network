@@ -36,10 +36,13 @@
 									<tbody>
 										{%foreach $list as $activity%}
                                         <tr>
-											{%foreach $activity as $key=>$value%}
-                                            <td>{%$value%}</td>
-                                            {%/foreach%}
-                                            <td>
+                        
+                                            <td>{%$activity.id%}</td>
+                                            <td>{%$activity.name%}</td>
+                                            <td>{%$activity.abbr%}</td>
+                                            <td>{%$activity.begin_date%}</td>
+                                            <td>{%$activity.end_date%}</td>
+                                        <td>
                                                 <a href="">Details</a>
                                             </td>
 										</tr>

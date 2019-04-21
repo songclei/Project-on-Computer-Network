@@ -1,3 +1,25 @@
+### 开机启动
+
++ 打开php-fpm
+
+  ```bash 
+  php-fpm --fpm-config /usr/local/etc/php-fpm.conf --prefix /usr/local/var
+  ```
+
++ 打开nginx: 
+
+  ```bash
+  nginx -c /usr/local/etc/nginx/nginx.conf
+  nginx -s reload
+  ```
+
++ 打开mysql
+
+  ```bash
+  /usr/local/Cellar/mysql/8.0.15/bin/mysql.server restart
+  ```
+
+
 ### .gitignore
 
 * When you add something into a .gitignore file, try this:
@@ -122,14 +144,8 @@ http://www.nginx.cn/4514.html
 
 ### 一些ideas 
 
-+ 公共的header 和 footer
-  + jQuery的load方法
-  + 转化成js代码，再加载进html
-  + ajax
-  + Django
 + 保持客户端登录状态
   + session
-  + token
 + 表单的一些验证，如密码、确认密码一致；密码长度；用户名… 用js
 + common.php 中WEB_ROOT改成自己电脑上的配置
 + 防止sql注入：使用预处理语句
@@ -137,6 +153,13 @@ http://www.nginx.cn/4514.html
   + 数字类型的sql字段，将str转为int
 + Smarty有自动cache机制，可能会导致显示的数据与后台不同步
 + login里面记住密码、忘记密码
++ 现阶段可以实现管理员删除activity的操作，接下去可以在删除活动时，发送消息给所有与会人员
++ 超级管理员的activity页面，可以设置删除/修改等操作
++ 个人profile，以及个人信息的修改
++ 弹窗/确认栏的美化
++ deleteRecord.php 用户删除参与会议的记录，只需要修改user_activity表
++ 千万注意！！！！从MySQL中取出的值，就算是int型，在php中也是str，必须用intval()函数进行转化
++ 可以设置某些用户为活动的管理人员
 
 
 
@@ -145,27 +168,4 @@ http://www.nginx.cn/4514.html
 
 
 
-
-### 开机启动
-
-+ 打开php-fpm
-
-  ```bash 
-  php-fpm --fpm-config /usr/local/etc/php-fpm.conf --prefix /usr/local/var
-  ```
-
-+ 打开nginx: 
-
-  ```bash
-  nginx -c /usr/local/etc/nginx/nginx.conf
-  nginx -s reload
-  ```
-
-+ 打开mysql
-
-  ```bash
-  /usr/local/Cellar/mysql/8.0.15/bin/mysql.server restart
-  ```
-
-  
 

@@ -10,6 +10,7 @@
     if ($ret['status'] === 0) {
         $_SESSION['uid'] = $ret['uid'];
         $_SESSION['username'] = $username;
+        $_SESSION['role'] = intval($ret['role']);
         header("Location: ./index.php"); 
         exit();
     }
