@@ -74,7 +74,7 @@
         if ($result === true) {
             $activityId = $conn->insert_id;
             $userId = $params['uid'];
-            $sql = "insert into user_activity (user_id, activity_id) values ($userId, $activityId)";
+            $sql = "insert into user_activity (user_id, activity_id, role) values ($userId, $activityId, 1)";
             $result = $conn->query($sql);
             if ($result === false) {
                 $ret['err_msg'] = $conn->error;

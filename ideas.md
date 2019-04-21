@@ -113,7 +113,12 @@ http://www.nginx.cn/4514.html
 
 或使用Win10内置的WSL功能，安装Ubuntu子系统，再按Linux的方法进行安装和配置
 
-
+### Mysql表说明
++ users
+   + role 1 表示管理员（需要手动在MySQL数据库内修改）  0 表示普通用户，注册时默认均为普通用户
++ activities
++ user_activity
+   + role 1 表示当前用户为该活动的管理员  0 表示普通与会人员
 
 ### 一些ideas 
 
