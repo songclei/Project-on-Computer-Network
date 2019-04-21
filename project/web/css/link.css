@@ -1,13 +1,13 @@
-a:link {
-    color: blue);
+.login:link {
+    color: blue;
     text-decoration: none
 }
 
-a:hover {
+.login:hover {
     color: #ff7f24;
     text-decoration: underline;
 }
-a:active {
+.login:active {
     color: #ff7f24;
     text-decoration: underline;
 }

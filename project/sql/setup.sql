@@ -7,6 +7,7 @@ CREATE TABLE IF NOT EXISTS users (
   username varchar(20) COLLATE utf8mb4_general_ci NOT NULL,
   password varchar(30) COLLATE utf8mb4_general_ci NOT NULL,
   email varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  role int(10) DEFAULT 0 NOT NULL,
   extra_json varchar(100) COLLATE utf8mb4_general_ci DEFAULT NULL,
   PRIMARY KEY (id),
   UNIQUE (username)
@@ -29,6 +30,7 @@ CREATE TABLE IF NOT EXISTS user_activity (
   activity_id int(10) unsigned NOT NULL,
   PRIMARY KEY(user_id, activity_id),
   extra_json varchar(100) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  role int(10) DEFAULT 0 NOT NULL,
   FOREIGN KEY (user_id) REFERENCES users(id),
   FOREIGN KEY (activity_id) REFERENCES activities(id) 
 );
