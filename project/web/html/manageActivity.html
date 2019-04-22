@@ -69,13 +69,13 @@
     <script type="text/javascript">
         function delete_activity(activity_id) {
             if (confirm("确认删除？")) {
-                window.location.href = "deleteActivity.php?activity_id=" + activity_id;
+                window.location.href = "php/activities/deleteActivity.php?activity_id=" + activity_id;
             }
         }
 
         function delete_record(activity_id, user_id) {
             if (confirm("确认退出？")) {
-                window.location.href = "deleteRecord.php?activity_id=" + activity_id + "&user_id=" + user_id; 
+                window.location.href = "php/user_activity/deleteRecord.php?activity_id=" + activity_id + "&user_id=" + user_id; 
             }
         }
     </script>
