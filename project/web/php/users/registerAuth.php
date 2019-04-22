@@ -1,6 +1,6 @@
 <?php
-    include_once("../lib/common.php");
-    include_once("../lib/user.php");
+    include_once("../../../lib/common.php");
+    include_once("../../../lib/user.php");
     session_start();
 
     $param = $_POST;
@@ -9,11 +9,12 @@
     if ($ret['status'] === 0) {
         $_SESSION['username'] = $_POST['username'];
         $_SESSION['uid'] = $ret['uid'];
-        header("Location: ./index.php");
+        $_SESSION['role'] = 0;
+        header("Location: ../../index.php");
         exit();
     }
     else {
-        header("Location: ./register.php");
+        header("Location: ../../register.php");
         exit();
     }
 ?>

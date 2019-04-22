@@ -10,6 +10,8 @@
 {%/block%}
 {%block name="title"%}<title>活动管理</title>{%/block%}
 
+
+
 {%block name="body" append%}
 <body>
         <div class="content">
@@ -35,10 +37,18 @@
 									<tbody>
 										{%foreach $list as $activity%}
                                         <tr>
-											{%foreach $activity as $key=>$value%}
-                                            <td>{%$value%}</td>
-                                            {%/foreach%}
+                                            <td>{%$activity.id%}</td>
+                                            <td>{%$activity.name%}</td>
+                                            <td>{%$activity.abbr%}</td>
+                                            <td>{%$activity.begin_date%}</td>
+                                            <td>{%$activity.end_date%}</td>
                                             <td>
+                                                {%if $activity.role == 1%}
+                                                <a href="javascript:delete_activity({%$activity.id%})">删除</a>
+                                                <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                                {%/if%}
+                                                <a href="javascript:delete_record({%$activity.id%}, {%$uid%})">退出</a>
+                                                <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
                                                 <a href="">Details</a>
                                             </td>
 										</tr>
@@ -56,6 +66,19 @@
 {%/block%}
 
 {%block name="javascript"%}
+    <script type="text/javascript">
+        function delete_activity(activity_id) {
+            if (confirm("确认删除？")) {
+                window.location.href = "php/activities/deleteActivity.php?activity_id=" + activity_id;
+            }
+        }
+
+        function delete_record(activity_id, user_id) {
+            if (confirm("确认退出？")) {
+                window.location.href = "php/user_activity/deleteRecord.php?activity_id=" + activity_id + "&user_id=" + user_id; 
+            }
+        }
+    </script>
 
     <script src="html/assets/js/lib/data-table/datatables.min.js"></script>
     <script src="html/assets/js/lib/data-table/dataTables.bootstrap.min.js"></script>

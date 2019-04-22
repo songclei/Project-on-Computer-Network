@@ -51,7 +51,8 @@ function checkUser($username, $password=null) {
     $ret = array(
         'status' => 1,
         'err_msg' => '',
-        'uid' => -1
+        'uid' => -1,
+        'role' => 0
     );
     // username can not be empty
     if (!isset($username)) {
@@ -73,6 +74,7 @@ function checkUser($username, $password=null) {
     }
     $ret['status'] = 0;
     $ret['uid'] = $userInfo['id'];
+    $ret['role'] = $userInfo['role'];
     return $ret;
 }
 

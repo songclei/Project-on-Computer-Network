@@ -5,6 +5,7 @@
     if (!empty($_SESSION['username'])) {
         $smarty3->assign('login', true);
         $smarty3->assign('username', $_SESSION['username']);
+        $smarty3->assign('role', $_SESSION['role']);
     } else {
         $smarty3->assign('login', false);
     }

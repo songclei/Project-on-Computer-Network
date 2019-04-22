@@ -36,11 +36,20 @@
 									<tbody>
 										{%foreach $list as $activity%}
                                         <tr>
-											{%foreach $activity as $key=>$value%}
-                                            <td>{%$value%}</td>
-                                            {%/foreach%}
+                                            <td>{%$activity.id%}</td>
+                                            <td>{%$activity.name%}</td>
+                                            <td>{%$activity.abbr%}</td>
+                                            <td>{%$activity.begin_date%}</td>
+                                            <td>{%$activity.end_date%}</td>
                                             <td>
-                                                <a href="">Details</a>
+                                                <a href="">查看</a>
+                                                <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                                {%if $role == 1%}
+                                                <a href="">管理</a>
+                                                <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                                <a href="javascript:delete_activity({%$activity.id%})">删除</a>
+                                                <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                                {%/if%}
                                             </td>
 										</tr>
                                         {%/foreach%}
@@ -57,6 +66,13 @@
 {%/block%}
 
 {%block name="javascript"%}
+    <script type="text/javascript">
+        function delete_activity(activity_id) {
+            if (confirm("确认删除？")) {
+                window.location.href = "php/activities/deleteActivity.php?activity_id=" + activity_id;
+            }
+        }
+    </script>
 
     <script src="html/assets/js/lib/data-table/datatables.min.js"></script>
     <script src="html/assets/js/lib/data-table/dataTables.bootstrap.min.js"></script>

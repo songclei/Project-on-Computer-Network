@@ -1,5 +1,6 @@
 <?php
     include_once("common.php");
+    include_once("user_activity.php");
 
     /**
      *  get activities which meet conditions
@@ -84,10 +85,42 @@
         }
         else {
             $ret['err_msg'] = $conn->error;
-            echo($conn->error);
+            //echo($conn->error);
             ret();
         }
         $conn->close();
         return $ret;
     }
+
+    /**
+     * delete an activity by id
+     * @param $id
+     * @return mixed
+     */
+    function deleteActivity($id) {
+        $ret = array(
+            'status' => 1,
+            'err_msg' => ''
+        );
+
+        $delete_ret = deleteRecordById($id);
+        if ($delete_ret['status'] === 1) {
+            $ret['err_msg'] = $delete_ret['err_msg'];
+        } else {
+            $sql = "delete from activities where id = $id";
+            $conn = new mysqli(SERVERNAME, USERNAME, PASSWORD, DBNAME);
+            if ($conn->connect_error) {
+                die($conn->connect_error);
+            }
+            $result = $conn->query($sql);
+            if ($result === false) {
+                $ret['err_msg'] = $conn->error;
+            } else {
+                $ret['status'] = 0;
+            }
+        }
+        $conn->close();
+        return $ret;
+    }
+
 ?>
