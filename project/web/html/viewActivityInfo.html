@@ -1,0 +1,32 @@
+{%extends file="./tpl/layout.html"%} 
+{%block name="css"%}
+	<link href="../css/login.css" rel="stylesheet" type="text/css" media="all">
+	<link href="../css/link.css" rel="stylesheet" type="text/css" media="all">
+{%/block%}
+
+{%block name="title"%}<title>活动信息 </title>{%/block%}
+
+
+{%block name="body"%}
+<body>
+				<div class="mid-class">
+					 <div class="art-right-w3ls">
+							{%foreach $list as $activity%}
+							<h2 style="color: rgba(31, 155, 212, 0.911)">Activity Name:{%$activity.name%}</h2>
+                            <h2 style="color: rgba(31, 155, 212, 0.911)">Begin date:{%$activity.begin_date%}</h2>
+                            <h2 style="color: rgba(31, 155, 212, 0.911)">End date:{%$activity.end_date%}</h2>
+							<h2 style="color: rgba(31, 155, 212, 0.911)">Activity Description:{%$activity.description%}</h2>
+							<h2 style="color: rgba(31, 155, 212, 0.911)">Web address:{%$activity.website_address%}</h2>
+							{%/foreach%}
+					 </div>
+					 <div class="art-left-w3ls">
+							<h1 class="header-w3ls">
+								Scientific conferences & activities
+							</h1>
+					 </div>
+				</div>
+				<footer class="bottem-wthree-footer">
+					 <p>Copyright © 2019. Chilly & Tian & Fiona. All rights reserved.</p>
+				</footer>
+			</body>
+{%/block%}

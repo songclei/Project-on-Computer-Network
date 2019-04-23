@@ -21,6 +21,8 @@ CREATE TABLE IF NOT EXISTS activities (
   abbr varchar(40) COLLATE utf8mb4_general_ci DEFAULT NULL,
   begin_date timestamp NOT NULL,
   end_date timestamp NOT NULL,
+  description text DEFAULT NULL,
+  website_address varchar(200) COLLATE utf8mb4_general_ci DEFAULT NULL,
   PRIMARY KEY (id),
   UNIQUE (name)
 );
