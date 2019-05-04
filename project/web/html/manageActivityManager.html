@@ -42,7 +42,7 @@
                                             <td>{%$activity.begin_date%}</td>
                                             <td>{%$activity.end_date%}</td>
                                             <td>
-                                                <a href="javascript:check_activity_information({%$activity.id%})">查看</a>
+                                                <a href="javascript:manage_activity_manager({%$activity.id%})">管理</a>
                                                 <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
                                             <!--
                                                 {%if $role == 1%}
@@ -69,14 +69,8 @@
 
 {%block name="javascript"%}
     <script type="text/javascript">
-        function check_activity_information(activity_id){
-            window.location.href = "./viewActivity.php?activity_id=" + activity_id;
-        }
-
-        function delete_activity(activity_id) {
-            if (confirm("确认删除？")) {
-                window.location.href = "php/activities/deleteActivity.php?activity_id=" + activity_id;
-            }
+        function manage_activity_manager(activity_id){
+            window.location.href = "./infoManager.php?activity_id=" + activity_id;
         }
     </script>
 

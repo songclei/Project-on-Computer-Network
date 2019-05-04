@@ -1,0 +1,35 @@
+{%extends file="./tpl/layout.html"%} 
+{%block name="css"%}
+	<link href="../css/login.css" rel="stylesheet" type="text/css" media="all">
+	<link href="../css/link.css" rel="stylesheet" type="text/css" media="all">
+{%/block%}
+
+{%block name="title"%}<title>活动信息</title>{%/block%}
+
+{%block name="body"%}
+<body>
+				<div class="mid-class">
+					 <div class="art-right-w3ls">
+                        <div id="" style="background-color:rgba(100,149,237,0.6);font-size:25px;position: absolute;color:rgba(255,255,255,1);padding:40px 50px 50px 50px;width:1000px">
+							{%foreach $list as $activity%}
+							<h3 style="margin:10px;">会议名称:<span>&emsp;</span>{%$activity.name%}</h3>
+                            <h3 style="margin:10px;">会议简称:<span>&emsp;</span>{%$activity.abbr%}</h3>
+                            <h3 style="margin:10px;">开始时间:<span>&emsp;</span>{%$activity.begin_date%}</h3>
+                            <h3 style="margin:10px;">结束时间:<span>&emsp;</span>{%$activity.end_date%}</h3>
+                            {%if $activity.description !== NULL%}
+							<h3 style="margin:10px;">会议介绍:<span>&emsp;</span>{%$activity.description%}</h3>
+                            {%/if%}
+                            {%if $activity.website_address !== NULL%}
+							<h3 style="margin:10px;">网页地址:<span>&emsp;</span>{%$activity.website_address%}</h3>
+                            {%/if%}
+                            {%if $login==false%}
+                            <p style=" text-align:right;font-size:15px;"><a href="login.php">申请加入会议</a></p>
+                            {%elseif $attendence==false%}
+                            <p style=" text-align:right;font-size:15px;"><a href="">申请加入会议</a></p>
+                            {%/if%}
+							{%/foreach%}
+					    </div>
+                     </div>
+				</div>
+</body>
+{%/block%}

@@ -1,0 +1,55 @@
+{%extends file="./tpl/layout.html"%} 
+{%block name="css" append%}
+    <link href="css/eventmin.css" rel="stylesheet" type="text/css" media="all">
+    
+    <link href="css/login.css" rel="stylesheet" type="text/css" media="all">
+    <link href="css/link.css" rel="stylesheet" type="text/css" media="all">
+
+    <link href="html/assets/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css" media="all">
+
+	  <link rel="stylesheet" href="html/assets/css/bootstrap.min.css" type="text/css" media="all">
+    <link rel="stylesheet" href="html/assets/css/lib/datatable/dataTables.bootstrap.min.css" type="text/css" media="all">
+
+    <link rel="stylesheet" href="html/assets/css/style.css" type="text/css" media="all">
+    
+    
+{%/block%}
+{%block name="title"%}<title>管理活动信息</title>{%/block%}
+
+
+{%block name="body" append%}
+<body>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-1 sidebar">
+            <ul class="nav nav-sidebar" style="line-height:60px">
+             <li class="active"><a href="">信息修改</a></li>
+             <li class=""><a href="javascript:attendent_manage({%$activity_id%})">用户管理</a></li>
+             <li class=""><a href="">信息导出</a></li>
+             <li class=""><a href="">详细日程</a></li>
+             <!--后两个功能只做占位符用 可以再定-->
+            </ul>
+          </div>
+          </div>
+        </div>
+      </div>
+</body>
+{%/block%}
+
+{%block name="javascript"%}
+    <script type="text/javascript">
+        function attendent_manage(activity_id){
+            window.location.href = "./attendentManager.php?activity_id=" + activity_id;
+        }
+    </script>
+
+    <script src="html/assets/js/lib/data-table/datatables.min.js"></script>
+    <script src="html/assets/js/lib/data-table/dataTables.bootstrap.min.js"></script>
+    <script src="html/assets/js/init/datatables-init.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+          $('#bootstrap-data-table-export').DataTable();
+      } );
+    </script>
+{%/block%}
