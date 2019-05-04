@@ -1,16 +1,16 @@
 {%extends file="./tpl/layout.html"%} 
 {%block name="css" append%}
-    <link href="css/eventmin.css" rel="stylesheet" type="text/css" media="all">
+    <link href="/css/eventmin.css" rel="stylesheet" type="text/css" media="all">
     
-    <link href="css/login.css" rel="stylesheet" type="text/css" media="all">
-    <link href="css/link.css" rel="stylesheet" type="text/css" media="all">
+    <link href="/css/login.css" rel="stylesheet" type="text/css" media="all">
+    <link href="/css/link.css" rel="stylesheet" type="text/css" media="all">
 
-    <link href="html/assets/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css" media="all">
+    <link href="/html/assets/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css" media="all">
 
-	  <link rel="stylesheet" href="html/assets/css/bootstrap.min.css" type="text/css" media="all">
-    <link rel="stylesheet" href="html/assets/css/lib/datatable/dataTables.bootstrap.min.css" type="text/css" media="all">
+	  <link rel="stylesheet" href="/html/assets/css/bootstrap.min.css" type="text/css" media="all">
+    <link rel="stylesheet" href="/html/assets/css/lib/datatable/dataTables.bootstrap.min.css" type="text/css" media="all">
 
-    <link rel="stylesheet" href="html/assets/css/style.css" type="text/css" media="all">
+    <link rel="stylesheet" href="/html/assets/css/style.css" type="text/css" media="all">
     
     
 {%/block%}
@@ -39,13 +39,13 @@
 {%block name="javascript"%}
     <script type="text/javascript">
         function attendent_manage(activity_id){
-            window.location.href = "./attendentManager.php?activity_id=" + activity_id;
+            window.location.href = "/php/attendentManager.php?activity_id=" + activity_id;
         }
     </script>
 
-    <script src="html/assets/js/lib/data-table/datatables.min.js"></script>
-    <script src="html/assets/js/lib/data-table/dataTables.bootstrap.min.js"></script>
-    <script src="html/assets/js/init/datatables-init.js"></script>
+    <script src="/html/assets/js/lib/data-table/datatables.min.js"></script>
+    <script src="/html/assets/js/lib/data-table/dataTables.bootstrap.min.js"></script>
+    <script src="/html/assets/js/init/datatables-init.js"></script>
 
     <script type="text/javascript">
         $(document).ready(function() {

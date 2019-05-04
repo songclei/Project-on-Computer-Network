@@ -1,16 +1,16 @@
 {%extends file="./tpl/layout.html"%} 
 {%block name="css" append%}
-    <link href="css/eventmin.css" rel="stylesheet" type="text/css" media="all">
+    <link href="/css/eventmin.css" rel="stylesheet" type="text/css" media="all">
     
-    <link href="css/login.css" rel="stylesheet" type="text/css" media="all">
-    <link href="css/link.css" rel="stylesheet" type="text/css" media="all">
+    <link href="/css/login.css" rel="stylesheet" type="text/css" media="all">
+    <link href="/css/link.css" rel="stylesheet" type="text/css" media="all">
 
-    <link href="html/assets/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css" media="all">
+    <link href="/html/assets/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css" media="all">
 
-      <link rel="stylesheet" href="html/assets/css/bootstrap.min.css" type="text/css" media="all">
-    <link rel="stylesheet" href="html/assets/css/lib/datatable/dataTables.bootstrap.min.css" type="text/css" media="all">
+    <link rel="stylesheet" href="/html/assets/css/bootstrap.min.css" type="text/css" media="all">
+    <link rel="stylesheet" href="/html/assets/css/lib/datatable/dataTables.bootstrap.min.css" type="text/css" media="all">
 
-    <link rel="stylesheet" href="html/assets/css/style.css" type="text/css" media="all">
+    <link rel="stylesheet" href="/html/assets/css/style.css" type="text/css" media="all">
     
     
 {%/block%}
@@ -110,45 +110,45 @@
 {%block name="javascript"%}
     <script type="text/javascript">
         function info_manage(activity_id){
-            window.location.href = "./infoManager.php?activity_id=" + activity_id;
+            window.location.href = "/php/infoManager.php?activity_id=" + activity_id;
         }
 
         function delete_record(activity_id, user_id) {
             if (confirm("确认将此用户退出活动？")) {
-                window.location.href = "php/user_activity/deleteRecordManager.php?activity_id=" + activity_id + "&user_id=" + user_id; 
+                window.location.href = "/php/user_activity/deleteRecordManager.php?activity_id=" + activity_id + "&user_id=" + user_id; 
             }
         }
 
         //从参加者变为管理员
         function add_activity_manager(activity_id, user_id) {
             if (confirm("确认添加此用户为活动的管理员？")) {
-                window.location.href = "php/user_activity/addActivityManager.php?activity_id=" + activity_id + "&user_id=" + user_id; 
+                window.location.href = "/php/user_activity/addActivityManager.php?activity_id=" + activity_id + "&user_id=" + user_id; 
             }
         }
 
         //从未参加者直接变为管理员
         function add_activity_manager_nonparticipant(activity_id, user_id) {
             if (confirm("确认添加此用户为活动的管理员？")) {
-                window.location.href = "php/user_activity/addActivityManagerNon.php?activity_id=" + activity_id + "&user_id=" + user_id; 
+                window.location.href = "/php/user_activity/addActivityManagerNon.php?activity_id=" + activity_id + "&user_id=" + user_id; 
             }
         }
 
         function add_activity_user(activity_id, user_id) {
             if (confirm("确认添加此用户为活动的参加者？")) {
-                window.location.href = "php/user_activity/addActivityUser.php?activity_id=" + activity_id + "&user_id=" + user_id; 
+                window.location.href = "/php/user_activity/addActivityUser.php?activity_id=" + activity_id + "&user_id=" + user_id; 
             }
         }
 
         function cancel_activity_manager(activity_id, user_id) {
             if (confirm("确认取消此用户为的管理员权限？")) {
-                window.location.href = "php/user_activity/cancelActivityManager.php?activity_id=" + activity_id + "&user_id=" + user_id; 
+                window.location.href = "/php/user_activity/cancelActivityManager.php?activity_id=" + activity_id + "&user_id=" + user_id; 
             }
         }
     </script>
 
-    <script src="html/assets/js/lib/data-table/datatables.min.js"></script>
-    <script src="html/assets/js/lib/data-table/dataTables.bootstrap.min.js"></script>
-    <script src="html/assets/js/init/datatables-init.js"></script>
+    <script src="/html/assets/js/lib/data-table/datatables.min.js"></script>
+    <script src="/html/assets/js/lib/data-table/dataTables.bootstrap.min.js"></script>
+    <script src="/html/assets/js/init/datatables-init.js"></script>
 
     <script type="text/javascript">
         $(document).ready(function() {

@@ -11,7 +11,7 @@
 
     $ret = addActivityManagerNon($activity_id, $user_id);
     if ($ret['status'] === 0) {
-        header("Location: ../../attendentManager.php?activity_id=". $activity_id);
+        header("Location: ../attendentManager.php?activity_id=". $activity_id);
         exit();
     } else {
         echo($ret['err_msg']);
