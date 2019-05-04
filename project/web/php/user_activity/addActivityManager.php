@@ -11,13 +11,13 @@
 
     // 检查user是否已经是activity的管理员
     if (empty($user_id) || checkActivityManager($user_id, $activity_id) === 1) {
-        header("Location: ../../attendentManager.php?activity_id=". $activity_id);
+        header("Location: ../attendentManager.php?activity_id=". $activity_id);
         exit();
     }
 
     $ret = addActivityManager($activity_id, $user_id);
     if ($ret['status'] === 0) {
-        header("Location: ../../attendentManager.php?activity_id=". $activity_id);
+        header("Location: ../attendentManager.php?activity_id=". $activity_id);
         exit();
     } else {
         echo($ret['err_msg']);

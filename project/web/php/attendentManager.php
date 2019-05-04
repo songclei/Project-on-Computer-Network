@@ -1,6 +1,6 @@
 <?php
-	include_once("../lib/common.php");
-	include_once("../lib/user_activity.php");
+	include_once("../../lib/common.php");
+	include_once("../../lib/user_activity.php");
 	session_start();
 
 	$activity_id = intval($_GET['activity_id']);
@@ -20,5 +20,5 @@
 	}
 	else{$smarty3->assign('login', false);}
 
-	$smarty3->display('./html/attendentManager.html');
+	$smarty3->display('../html/attendentManager.html');
 ?>
