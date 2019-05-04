@@ -1,7 +1,7 @@
 {%extends file="./tpl/layout.html"%} 
 {%block name="css"%}
-	<link href="../css/login.css" rel="stylesheet" type="text/css" media="all">
-	<link href="../css/link.css" rel="stylesheet" type="text/css" media="all">
+	<link href="/css/login.css" rel="stylesheet" type="text/css" media="all">
+	<link href="/css/link.css" rel="stylesheet" type="text/css" media="all">
 {%/block%}
 
 {%block name="title"%}<title>活动信息</title>{%/block%}
@@ -23,7 +23,7 @@
 							<h3 style="margin:10px;">网页地址:<span>&emsp;</span>{%$activity.website_address%}</h3>
                             {%/if%}
                             {%if $login==false%}
-                            <p style=" text-align:right;font-size:15px;"><a href="login.php">申请加入会议</a></p>
+                            <p style=" text-align:right;font-size:15px;"><a href="/login.php">申请加入会议</a></p>
                             {%elseif $attendence==false%}
                             <p style=" text-align:right;font-size:15px;"><a href="">申请加入会议</a></p>
                             {%/if%}
