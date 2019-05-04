@@ -20,6 +20,10 @@
                         <div class="card">
                             <div class="card-header">
                                 <strong class="card-title">Data Table</strong>
+                                {%if $role === 1%}
+                                    <span style="font-family:'Times New Roman';">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</span>
+                                    <a href="manageActivityManager.php">管理员入口</a>
+                                {%/if%}
                             </div>
                             <div class="card-body">
                                 <table id="bootstrap-data-table" class="table table-striped table-bordered table-hover">
@@ -43,13 +47,13 @@
                                             <td>{%$activity.begin_date%}</td>
                                             <td>{%$activity.end_date%}</td>
                                             <td>
+                                                <a href="javascript:check_activity_information({%$activity.id%})">查看</a>
+                                                <span style="font-family:'Times New Roman';">&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                                <a href="javascript:delete_record({%$activity.id%}, {%$uid%})">退出</a>
+                                                <span style="font-family:'Times New Roman';">&nbsp;&nbsp;&nbsp;&nbsp;</span>
                                                 {%if $activity.role == 1%}
                                                 <a href="javascript:delete_activity({%$activity.id%})">删除</a>
-                                                <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
                                                 {%/if%}
-                                                <a href="javascript:delete_record({%$activity.id%}, {%$uid%})">退出</a>
-                                                <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                                                <a href="">Details</a>
                                             </td>
 										</tr>
                                         {%/foreach%}
@@ -67,6 +71,10 @@
 
 {%block name="javascript"%}
     <script type="text/javascript">
+        function check_activity_information(activity_id){
+            window.location.href = "viewActivity.php?activity_id=" + activity_id;
+        }
+
         function delete_activity(activity_id) {
             if (confirm("确认删除？")) {
                 window.location.href = "php/activities/deleteActivity.php?activity_id=" + activity_id;
@@ -77,6 +85,10 @@
             if (confirm("确认退出？")) {
                 window.location.href = "php/user_activity/deleteRecord.php?activity_id=" + activity_id + "&user_id=" + user_id; 
             }
+        }
+
+        function admin_manage_activity(activity_id){
+            //window.location.href = "php/activities/viewActivity.php?activity_id=" + activity_id;
         }
     </script>
 

@@ -69,7 +69,9 @@
             echo($conn->error);
             exit();
             }
-        $sql->bind_param("ssss", $name, $abbr, date('Y-m-d H:i:s',strtotime($begin_date)), date('Y-m-d H:i:s',strtotime($end_date)));
+        $begin_date_pass = date('Y-m-d H:i:s',strtotime($begin_date));
+        $end_date_pass = date('Y-m-d H:i:s',strtotime($end_date));
+        $sql->bind_param("ssss", $name, $abbr, $begin_date_pass, $end_date_pass);
         
         $result = $sql->execute();
         if ($result === true) {
@@ -85,7 +87,7 @@
         }
         else {
             $ret['err_msg'] = $conn->error;
-            //echo($conn->error);
+            echo($conn->error);
             ret();
         }
         $conn->close();
