@@ -22,10 +22,16 @@
                             {%if $activity.website_address !== NULL%}
 							<h3 style="margin:10px;">网页地址:<span>&emsp;</span>{%$activity.website_address%}</h3>
                             {%/if%}
-                            {%if $login==false%}
+                            {%if $from_info_change==0 and $login==false %}
                             <p style=" text-align:right;font-size:15px;"><a href="/login.php">申请加入会议</a></p>
-                            {%elseif $attendence==false%}
+                            {%elseif $from_info_change==0 and $attendence==false%}
                             <p style=" text-align:right;font-size:15px;"><a href="">申请加入会议</a></p>
+                            {%/if%}
+                            {%if $from_info_change==0%}
+                            <p style=" text-align:right;font-size:15px;"><a href="/index.php">返回活动列表</a></p>
+                            {%/if%}
+                            {%if $from_info_change==1%}
+                            <p style=" text-align:right;font-size:15px;"><a href="/php/infoManager.php?activity_id={%$activity.id%}">返回信息修改界面</a></p>
                             {%/if%}
 							{%/foreach%}
 					    </div>

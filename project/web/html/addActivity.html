@@ -1,87 +1,87 @@
 {%extends file="./tpl/layout.html"%} 
-{%block name="css" append%}
-	<link href="/css/login.css" rel="stylesheet" type="text/css" media="all">
-    <link href="/css/link.css" rel="stylesheet" type="text/css" media="all">
+{%block name="css" %}
 
-	<link rel="stylesheet" href="/html/assets/css/bootstrap.min.css" type="text/css" media="all">
+    <link rel="stylesheet" href="/html/assets/css/bootstrap.min.css" type="text/css" media="all">
     <link rel="stylesheet" href="/html/assets/css/lib/datatable/dataTables.bootstrap.min.css" type="text/css" media="all">
 
-    <link rel="stylesheet" href="/html/assets/css/style.css" type="text/css" media="all">
+    <link href="/css/login.css" rel="stylesheet" type="text/css" media="all">
+    <link href="/css/link.css" rel="stylesheet" type="text/css" media="all">
+
 
 {%/block%}
-	
+    
 {%block name="title"%}<title>创建活动界面</title>{%/block%}
 
 {%block name="javascript"%}
-	<script type="text/javascript" src="/jquery/jquery-3.3.1.min.js"></script>
-	<script type="text/javascript" src="/html/assets/js/bootstrap.min.js"></script> 
-	
-	<script src="html/assets/js/bootstrap-datepicker.min.js"></script>
+    <script type="text/javascript" src="/jquery/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="/html/assets/js/bootstrap.min.js"></script> 
+    
+    <script src="html/assets/js/bootstrap-datepicker.min.js"></script>
 
-	<script type="text/javascript">
-	$("input[name$='date']").datepicker({
-						format: "yyyy-mm-dd",
-						autoclose: true,
-						orientation: "bottom auto"
-	});
+    <script type="text/javascript">
+    $("input[name$='date']").datepicker({
+                        format: "yyyy-mm-dd",
+                        autoclose: true,
+                        orientation: "bottom auto"
+    });
 
-	//检查name，abbr是否重名，开始时间是否早于结束时间
-	//待完成
-	function checkActivity(){
-		return true;
-	}
+    //检查name，abbr是否重名，开始时间是否早于结束时间
+    //待完成
+    function checkActivity(){
+        return true;
+    }
 
 </script>
 {%/block%}
 
-{%block name="body" append%}
+{%block name="body"%}
 <body>
-				<div class="mid-class">
-					 <div class="art-right-w3ls">
-							<h2 style="color: rgba(31, 155, 212, 0.911)">创建活动</h2>
-							<form action="php/activities/addActivityAuth.php" method="post" name="registerForm">
-								 <div class="main">
-										<div class="form-left-to-w3l">
-											 <input type="text" id="name" name="name" placeholder="会议名称" autocomplete="off"required="">
-										</div>
-										<div class="form-left-to-w3l ">
-												<input type="text" id="abbr" name="abbr" placeholder="会议简称" autocomplete="off" required="">	
-												<div class="clear"></div>		
-										</div>
-										<div class="form-group">
-											<div class="form-left-to-w3l ">
-													<input type="text" id="begin_date" name="begin_date" class="form-control" placeholder="开始时间" autocomplete="off" required="">	
-													<div class="clear"></div>
-											</div>
-										</div>
-										<div class="form-group">
-											<div class="form-left-to-w3l ">
-													<input type="text" id="end_date" name="end_date" class="form-control" placeholder="结束时间" autocomplete="off" required="">	
-													<div class="clear"></div>
-											</div>
-										</div>
+                <div class="mid-class">
+                     <div class="art-right-w3ls">
+                            <h2 style="color: rgba(31, 155, 212, 0.911)">创建活动</h2>
+                            <form action="php/activities/addActivityAuth.php" method="post" name="registerForm">
+                                 <div class="main">
+                                        <div class="form-left-to-w3l">
+                                             <input type="text" id="name" name="name" placeholder="会议名称" autocomplete="off"required="">
+                                        </div>
+                                        <div class="form-left-to-w3l ">
+                                                <input type="text" id="abbr" name="abbr" placeholder="会议简称" autocomplete="off" required=""> 
+                                                <div class="clear"></div>       
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="form-left-to-w3l ">
+                                                    <input type="text" id="begin_date" name="begin_date" class="form-control" placeholder="开始时间" autocomplete="off" required="">    
+                                                    <div class="clear"></div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="form-left-to-w3l ">
+                                                    <input type="text" id="end_date" name="end_date" class="form-control" placeholder="结束时间" autocomplete="off" required="">    
+                                                    <div class="clear"></div>
+                                            </div>
+                                        </div>
 
-								 </div>
-								 <div class="clear"></div>
-								 <div class="btnn">
-										<button type="submit" onclick="return checkActivity();">添加活动</button>
-								 </div>
-							</form>
-							<div class="w3layouts_more-buttn">
-								 <h3>
-										<a href="/index.php">查看已有活动
-										</a>
-								 </h3>
-							</div>
-					 </div>
-					 <div class="art-left-w3ls">
-							<h1 class="header-w3ls">
-								Scientific conferences & activities
-							</h1>
-					 </div>
-				</div>
-				<footer class="bottem-wthree-footer">
-					 <p>Copyright © 2019. Chilly & Tian & Fiona. All rights reserved.</p>
-				</footer>
-			</body>
+                                 </div>
+                                 <div class="clear"></div>
+                                 <div class="btnn">
+                                        <button type="submit" onclick="return checkActivity();">添加活动</button>
+                                 </div>
+                            </form>
+                            <div class="w3layouts_more-buttn">
+                                 <h3>
+                                        <a href="/index.php">查看已有活动
+                                        </a>
+                                 </h3>
+                            </div>
+                     </div>
+                     <div class="art-left-w3ls">
+                            <h1 class="header-w3ls" style="font-size: 45px;">
+                                Scientific conferences & activities
+                            </h1>
+                     </div>
+                </div>
+                <footer class="bottem-wthree-footer">
+                     <p>Copyright © 2019. Chilly & Tian & Fiona. All rights reserved.</p>
+                </footer>
+            </body>
 {%/block%}

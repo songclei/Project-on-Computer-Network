@@ -4,9 +4,12 @@
 	session_start();
 
 	$activity_id = intval($_GET['activity_id']);
+	# whether to show the "back_to_info_change" button
+	$from_info_change = intval($_GET['from_info_change']);
 	$activity = getActivities(array("id" => $activity_id));
 	$list = $activity['list'];
 	$smarty3->assign('list', $list);
+	$smarty3->assign('from_info_change', $from_info_change);
 
 	if(!empty($_SESSION['username']))
 	{

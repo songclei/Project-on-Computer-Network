@@ -125,4 +125,57 @@
         return $ret;
     }
 
+    /**
+     * change the activity information according to params
+     * @param $params
+     * @return mixed
+     */
+    function changeActivityInfo($params){
+        $ret = array(
+            'status' => 1,
+            'err_msg' => ''
+        );
+        $activity_id = $params['activity_id'];
+        if (empty($activity_id)) {
+            $ret['err_msg'] = 'empty activity id';
+            return $ret;
+        }
+        $conn = new mysqli(SERVERNAME, USERNAME, PASSWORD, DBNAME);
+        if ($conn->connect_error) {
+            die($conn->connect_error);
+        }
+        $sql = "update activities set";
+        $name = $params['name'];
+        $abbr = $params['abbr'];
+        $description = $params['description'];
+        $website_address = $params['website_address'];
+        if (!empty($name))
+        {
+            $sql = $sql . " name = '$name',";
+        }
+        if (!empty($abbr))
+        {
+            $sql = $sql . " abbr = '$abbr',";
+        }
+        if (!empty($description))
+        {
+            $sql = $sql . " description = '$description',";
+        }
+        if (!empty($webaddress))
+        {
+            $sql = $sql . " website_address = '$website_address',";
+        }
+
+        $sql = substr($sql, 0, strlen($sql)-1);
+        $sql = $sql . " where id = $activity_id";
+        $result = $conn->query($sql);
+        if ($result === false) {
+            $ret['err_msg'] = $conn->error;
+        } else {
+            $ret['status'] = 0;
+        }
+
+        $conn->close();
+        return $ret;
+    }
 ?>

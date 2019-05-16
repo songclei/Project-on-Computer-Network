@@ -4,16 +4,15 @@
     session_start();
 
     $param = $_POST;
-    $param['uid'] = $_SESSION['uid'];
-    $ret = addActivities($param);
+    $activity_id = $param['activity_id'];
+    $ret = changeActivityInfo($param);
 
     if ($ret['status'] === 0) {
-        //print("succeed");
-        header("Location: ../../index.php");
+        header("Location: ./viewActivity.php?activity_id=". $activity_id . "&from_info_change=1");
         exit();
     }
     else {
-        header("Location: ../../addActivity.php");
+        header("Location: ../infoManager.php?activity_id=". $activity_id);
         exit();
     }
 ?>
