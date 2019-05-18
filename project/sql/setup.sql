@@ -27,6 +27,8 @@ CREATE TABLE IF NOT EXISTS activities (
   UNIQUE (name)
 );
 
+ALTER TABLE activities ADD COLUMN add_member int(10) DEFAULT 0 NOT NULL;
+
 CREATE TABLE IF NOT EXISTS user_activity (
   user_id int(10) unsigned NOT NULL,
   activity_id int(10) unsigned NOT NULL,

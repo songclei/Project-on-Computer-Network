@@ -35,6 +35,7 @@
                                     {%strip%}
 									<tbody>
 										{%foreach $list as $activity%}
+                                        {%if $role == 1 or $activity.role == 1%}
                                         <tr>
                                             <td>{%$activity.id%}</td>
                                             <td>{%$activity.name%}</td>
@@ -44,6 +45,7 @@
                                             <td>
                                                 <a href="javascript:manage_activity_manager({%$activity.id%})">管理</a>
                                                 <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                                <a href="javascript:delete_activity({%$activity.id%})">删除</a>
                                             <!--
                                                 {%if $role == 1%}
                                                 <a href="">管理</a>
@@ -54,6 +56,7 @@
                                             -->
                                             </td>
 										</tr>
+                                        {%/if%}
                                         {%/foreach%}
 									</tbody>
                                     {%/strip%}
@@ -71,6 +74,12 @@
     <script type="text/javascript">
         function manage_activity_manager(activity_id){
             window.location.href = "/php/infoManager.php?activity_id=" + activity_id;
+        }
+
+        function delete_activity(activity_id) {
+            if (confirm("确认删除此活动？")) {
+                window.location.href = "/php/activities/deleteActivity.php?activity_id=" + activity_id;
+            }
         }
     </script>
 

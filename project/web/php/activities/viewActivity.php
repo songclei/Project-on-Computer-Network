@@ -16,6 +16,7 @@
 		$smarty3->assign('login', true);
 		//$smarty3->assign('uid', $uid);
 		$uid = $_SESSION['uid'];
+		$smarty3->assign('user_id', $uid);
 		if (checkActivityAttendent($uid, $activity_id) === 1)
 			{$smarty3->assign('attendence', true);}
 		else{$smarty3->assign('attendence', false);}
