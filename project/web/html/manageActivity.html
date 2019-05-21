@@ -22,6 +22,9 @@
                                 <strong class="card-title">活动管理</strong>
                                 {%if $role === 1%}
                                     <span style="font-family:'Times New Roman';">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</span>
+                                    <a href="/php/manageActivityManager.php">超级管理员入口</a>
+                                {%else%}
+                                    <span style="font-family:'Times New Roman';">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</span>
                                     <a href="/php/manageActivityManager.php">管理员入口</a>
                                 {%/if%}
                             </div>
@@ -51,10 +54,11 @@
                                                 <span style="font-family:'Times New Roman';">&nbsp;&nbsp;&nbsp;&nbsp;</span>
                                                 <a href="javascript:delete_record({%$activity.id%}, {%$uid%})">退出</a>
                                                 <span style="font-family:'Times New Roman';">&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                                <!--
                                                 {%if $activity.role == 1%}
                                                 <a href="javascript:delete_activity({%$activity.id%})">删除</a>
                                                 {%/if%}
-                                            </td>
+                                            -->
 										</tr>
                                         {%/foreach%}
 									</tbody>
@@ -76,13 +80,13 @@
         }
 
         function delete_activity(activity_id) {
-            if (confirm("确认删除？")) {
+            if (confirm("确认删除此活动？")) {
                 window.location.href = "/php/activities/deleteActivity.php?activity_id=" + activity_id;
             }
         }
 
         function delete_record(activity_id, user_id) {
-            if (confirm("确认退出？")) {
+            if (confirm("确认退出此活动？")) {
                 window.location.href = "/php/user_activity/deleteRecord.php?activity_id=" + activity_id + "&user_id=" + user_id; 
             }
         }

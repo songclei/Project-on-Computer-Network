@@ -70,7 +70,7 @@
 {%block name="javascript"%}
     <script type="text/javascript">
         function check_activity_information(activity_id){
-            window.location.href = "/php/activities/viewActivity.php?activity_id=" + activity_id;
+            window.location.href = "/php/activities/viewActivity.php?activity_id=" + activity_id + "&from_info_change=0";
         }
 
         function delete_activity(activity_id) {

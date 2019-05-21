@@ -15,7 +15,6 @@
 {%/block%}
 {%block name="title"%}<title>管理活动信息</title>{%/block%}
 
-
 {%block name="body" append%}
 <body>
       <div class="container-fluid">
@@ -36,7 +35,8 @@
       <div class="mid-class">
         <div style="position: absolute; margin-left:100px;width:1100px;">
            <div class="art-right-w3ls">
-              <form action="php/activities/changeActivityInfo.php" method="post" name="registerForm">
+              <form action="/php/activities/changeActivityInfo.php" method="post" name="registerForm">
+                <input type="hidden" name="activity_id" value={%$activity_id%}>
                  <div class="main">
                     <div class="form-left-to-w3l">
                        <input type="text" id="name" name="name" placeholder="会议名称" autocomplete="off"required="">
@@ -58,11 +58,11 @@
                       </div>
                     </div>
                     <div class="form-left-to-w3l ">
-                        <input type="text" id="description" name="abbr" placeholder="会议介绍" autocomplete="off" required=""> 
-                        <div class="clear"></div>   
+                        <input type="text" id="description" name="description" placeholder="会议介绍" autocomplete="off" required="">  
+                          <div class="clear"></div> 
                     </div>
                     <div class="form-left-to-w3l ">
-                        <input type="text" id="description" name="website_address" placeholder="会议网址" autocomplete="off" required=""> 
+                        <input type="text" id="website_address" name="website_address" placeholder="会议网址" autocomplete="off" required=""> 
                         <div class="clear"></div>   
                     </div>
                    </div>
@@ -76,7 +76,7 @@
               <div class="w3layouts_more-buttn">
                 <div style="position: absolute;margin-top:-20px;margin-left:590px;">
                  <h3>
-                    <a href="/php/infoManager.php">重置信息
+                    <a href="/php/infoManager.php?activity_id={%$activity_id%}">重置信息
                     </a>
                  </h3>
                 </div>
@@ -88,6 +88,21 @@
 {%/block%}
 
 {%block name="javascript"%}
+
+    <script type="text/javascript" src="/jquery/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="/html/assets/js/bootstrap.min.js"></script> 
+    
+    <script src="html/assets/js/bootstrap-datepicker.min.js"></script>
+
+    <script type="text/javascript">
+    $("input[name$='date']").datepicker({
+                        format: "yyyy-mm-dd",
+                        autoclose: true,
+                        orientation: "bottom auto"
+    });
+
+    </script>
+    
     <script type="text/javascript">
         function attendent_manage(activity_id){
             window.location.href = "/php/attendentManager.php?activity_id=" + activity_id;
@@ -103,4 +118,5 @@
           $('#bootstrap-data-table-export').DataTable();
       } );
     </script>
+
 {%/block%}
