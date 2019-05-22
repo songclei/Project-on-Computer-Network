@@ -25,9 +25,19 @@
                         orientation: "bottom auto"
     });
 
-    //检查name，abbr是否重名，开始时间是否早于结束时间
-    //待完成
+    //检查开始时间是否早于结束时间
+    //name是否重名在提交后检查
     function checkActivity(){
+        return checkTime();
+    }
+
+    function checkTime() {
+        var startTime = document.getElementById("begin_date");
+        var endTime = document.getElementById("end_date");
+        if (startTime.value > endTime.value) {
+            alert("开始时间不能晚于结束时间");
+            return false;
+        }
         return true;
     }
 
