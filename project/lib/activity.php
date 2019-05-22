@@ -87,8 +87,8 @@
         }
         else {
             $ret['err_msg'] = $conn->error;
-            echo($conn->error);
-            ret();
+            //echo($conn->error);
+            //ret();
         }
         $conn->close();
         return $ret;

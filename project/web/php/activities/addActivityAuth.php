@@ -13,7 +13,9 @@
         exit();
     }
     else {
-        header("Location: ../../addActivity.php");
+        //header("Location: ../../addActivity.php");
+        echo "<script>alert('已有相同的会议名称');</script>";
+        echo "<script>location.href='../../addActivity.php'</script>";
         exit();
     }
 ?>
