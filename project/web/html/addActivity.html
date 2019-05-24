@@ -27,21 +27,63 @@
                         orientation: "bottom auto"
     });
 
+    var statusActivityname = 0;
+    var statusTime = 0;
+
     //检查开始时间是否早于结束时间
     //name是否重名在提交后检查
     function checkActivity(){
-        return checkTime();
+        return checkActivityname() && checkTime();
+    }
+
+    function checkActivityname() {
+        if (statusActivityname) {
+            return true;
+        } else {
+            alert("已存在同名活动");
+            return false;
+        }
     }
 
     function checkTime() {
-        var startTime = document.getElementById("begin_date");
-        var endTime = document.getElementById("end_date");
-        if (startTime.value > endTime.value) {
+        if (!statusTime) {
             alert("开始时间不能晚于结束时间");
             return false;
         }
         return true;
     }
+
+    $(document).ready(function() {
+        $("#name").change(function() {
+            $(this).css("background-color", "#FFFFCC");
+            var name = document.getElementById("name").value;
+            $.get("./ajaxRequest/checkActivitynameUsed.php", {activityname: name}, function(msg) {
+                msg = $.trim(msg);
+                document.getElementById("name_alert").innerHTML = msg;
+                if (msg !== "") {
+                    statusActivityname = 0;
+                } else {
+                    statusActivityname = 1;
+                }
+            });
+        });
+
+        $("#begin_date, #end_date").change(function() {
+            var begindate = document.getElementById("begin_date");
+            var enddate = document.getElementById("end_date");
+            if (begindate.value !== "" && enddate.value !== "" && begindate.value > enddate.value) {
+                document.getElementById("date_alert").innerHTML = "开始时间不能晚于结束时间";
+                statusTime = 0;
+            }
+            else {
+                document.getElementById("date_alert").innerHTML = "";
+                statusTime = 1;
+            }
+        });
+    });
+
+
+
 
 </script>
 {%/block%}
@@ -51,10 +93,11 @@
                 <div class="mid-class">
                      <div class="art-right-w3ls">
                             <h2 style="color: rgba(31, 155, 212, 0.911)">创建活动</h2>
-                            <form action="php/activities/addActivityAuth.php" method="post" name="registerForm">
+                            <form action="php/activities/addActivityAuth.php" method="post" name="registerForm" onsubmit="return checkActivity();">
                                  <div class="main">
                                         <div class="form-left-to-w3l">
-                                             <input type="text" id="name" name="name" placeholder="会议名称" autocomplete="off"required="">
+                                            <div style="color: red; font-size: 3mm" id="name_alert"></div>
+                                            <input type="text" id="name" name="name" placeholder="会议名称" autocomplete="off"required="">                                 
                                         </div>
                                         <div class="form-left-to-w3l ">
                                                 <input type="text" id="abbr" name="abbr" placeholder="会议简称" autocomplete="off" required=""> 
@@ -68,15 +111,16 @@
                                         </div>
                                         <div class="form-group">
                                             <div class="form-left-to-w3l ">
+                                                    <div style="color: red; font-size: 3mm" id="date_alert"></div>
                                                     <input type="text" id="end_date" name="end_date" class="form-control" placeholder="结束时间" autocomplete="off" required="">    
-                                                    <div class="clear"></div>
+                                                    <div class="clear"></div>                                                   
                                             </div>
                                         </div>
 
                                  </div>
                                  <div class="clear"></div>
                                  <div class="btnn">
-                                        <button type="submit" onclick="return checkActivity();">添加活动</button>
+                                        <button id="submit" type="submit">添加活动</button>
                                  </div>
                             </form>
                             <div class="w3layouts_more-buttn">

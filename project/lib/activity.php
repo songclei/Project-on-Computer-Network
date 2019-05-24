@@ -16,11 +16,11 @@
         }
         if (!empty($filter['name'])) {
             $name = $filter['name'];
-            $where = $where . "and name = $name ";
+            $where = $where . "and name = '$name' ";
         }
         if (!empty($filter['abbr'])) {
             $abbr = $filter['abbr'];
-            $where = $where . "and abbr = $abbr ";
+            $where = $where . "and abbr = '$abbr' ";
         }
         if (!empty($filter['begin_date'])) {
             $beginDate = $filter['begin_date'];
@@ -178,4 +178,20 @@
         $conn->close();
         return $ret;
     }
+
+    /**
+     * check whether the activityname is occupied
+     * @param activityname
+     * @return true: occupied
+     * @return false: not occupied
+     */
+    function checkActivitynameUsed($activityname) {
+        $ret = getActivities(array("name"=>$activityname));
+        if ($ret['num'] === 0) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
 ?>
