@@ -2,6 +2,7 @@
 {%block name="css" append%}
     <link href="/css/eventmin.css" rel="stylesheet" type="text/css" media="all">
     <link href="/html/assets/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css" media="all">
+    <link href="/html/assets/css/bootstrap-datepicker3.min.css" rel="stylesheet" type="text/css" media="all">
     
     <link href="/css/login.css" rel="stylesheet" type="text/css" media="all">
     <link href="/css/link.css" rel="stylesheet" type="text/css" media="all">
@@ -24,7 +25,7 @@
               <ul class="nav nav-sidebar" style="line-height:60px">
                 <li class="active"><a href="">信息修改</a></li>
                 <li class=""><a href="javascript:attendent_manage({%$activity_id%})">用户管理</a></li>
-                <li class=""><a href="">信息导出</a></li>
+                <li class=""><a href="javascript:info_export({%$activity_id%})">信息导出</a></li>
                 <li class=""><a href="">详细日程</a></li>
              <!--后两个功能只做占位符用 可以再定-->
               </ul>
@@ -92,7 +93,7 @@
     <script type="text/javascript" src="/jquery/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="/html/assets/js/bootstrap.min.js"></script> 
     
-    <script src="html/assets/js/bootstrap-datepicker.min.js"></script>
+    <script src="/html/assets/js/bootstrap-datepicker.min.js"></script>
 
     <script type="text/javascript">
     $("input[name$='date']").datepicker({
@@ -106,6 +107,9 @@
     <script type="text/javascript">
         function attendent_manage(activity_id){
             window.location.href = "/php/attendentManager.php?activity_id=" + activity_id;
+        }
+        function info_export(activity_id) {
+          window.location.href = "/php/infoExport.php?activity_id=" + activity_id;
         }
     </script>
 

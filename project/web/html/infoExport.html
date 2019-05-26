@@ -1,0 +1,89 @@
+{%extends file="./tpl/layout.html"%} 
+{%block name="css" append%}
+    <link href="/css/eventmin.css" rel="stylesheet" type="text/css" media="all">
+    <link href="/html/assets/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css" media="all">
+    <link href="/html/assets/css/bootstrap-datepicker3.min.css" rel="stylesheet" type="text/css" media="all">
+    
+    <link href="/css/login.css" rel="stylesheet" type="text/css" media="all">
+    <link href="/css/link.css" rel="stylesheet" type="text/css" media="all">
+
+	  <link rel="stylesheet" href="/html/assets/css/bootstrap.min.css" type="text/css" media="all">
+    <link rel="stylesheet" href="/html/assets/css/lib/datatable/dataTables.bootstrap.min.css" type="text/css" media="all">
+
+    <link rel="stylesheet" href="/html/assets/css/style.css" type="text/css" media="all">
+    
+    
+{%/block%}
+{%block name="title"%}<title>活动信息导出</title>{%/block%}
+
+{%block name="body" append%}
+<body>
+      <div class="container-fluid">
+        <div class="row">
+          <div style="position: absolute; margin-top:50px;">
+            <div class="col-md-3 sidebar">
+              <ul class="nav nav-sidebar" style="line-height:60px">
+                <li class=""><a href="javascript:info_manage({%$activity_id%})">信息修改</a></li>
+                <li class=""><a href="javascript:attendent_manage({%$activity_id%})">用户管理</a></li>
+                <li class="active"><a href="">信息导出</a></li>
+                <li class=""><a href="">详细日程</a></li>
+             <!--后两个功能只做占位符用 可以再定-->
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mid-class">
+        <div style="position: absolute; margin-left:100px;width:1100px;">
+           <div class="art-right-w3ls">
+              <form action="/php/activities/downloadXls.php" method="post" name="registerForm">
+                <input type="hidden" name="activity_id" value={%$activity_id%}>
+                 <div class="clear"></div>
+                 <div class="btnn">
+                  <div style="position: absolute; margin-left:550px;">
+                    <button type="submit" onclick="return checkActivity();">下载参会者信息</button>
+                  </div>
+                 </div>
+              </form>
+           </div>
+        </div>
+      </div>
+</body>
+{%/block%}
+
+{%block name="javascript"%}
+
+    <script type="text/javascript" src="/jquery/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="/html/assets/js/bootstrap.min.js"></script> 
+    
+    <script src="/html/assets/js/bootstrap-datepicker.min.js"></script>
+
+    <script type="text/javascript">
+    $("input[name$='date']").datepicker({
+                        format: "yyyy-mm-dd",
+                        autoclose: true,
+                        orientation: "bottom auto"
+    });
+
+    </script>
+    
+    <script type="text/javascript">
+        function info_manage(activity_id){
+            window.location.href = "/php/infoManager.php?activity_id=" + activity_id;
+        }       
+        function attendent_manage(activity_id){
+            window.location.href = "/php/attendentManager.php?activity_id=" + activity_id;
+        }
+    </script>
+
+    <script src="/html/assets/js/lib/data-table/datatables.min.js"></script>
+    <script src="/html/assets/js/lib/data-table/dataTables.bootstrap.min.js"></script>
+    <script src="/html/assets/js/init/datatables-init.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+          $('#bootstrap-data-table-export').DataTable();
+      } );
+    </script>
+
+{%/block%}
