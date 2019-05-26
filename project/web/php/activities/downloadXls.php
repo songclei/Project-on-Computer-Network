@@ -3,7 +3,7 @@
     include_once("../../../lib/activity.php");
     include_once("../../../lib/user_activity.php");
     
-    require_once("../../../lib/PHPSpreadSheet/vendor/autoload.php");
+    require_once("../../../third_party/PHPSpreadSheet/vendor/autoload.php");
     use PhpOffice\PhpSpreadsheet\Spreadsheet;
     use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
