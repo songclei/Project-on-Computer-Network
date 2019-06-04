@@ -3,8 +3,8 @@
 	include_once("../../lib/user_activity.php");
 	session_start();
 
-	#$activity_id = intval($_GET['activity_id']);
-	$activity_id = intval(1);
+	$activity_id = intval($_GET['activity_id']);
+	#$activity_id = intval(1);
 	
 	$users = getUserIdByActivities($activity_id);
 	$other_users = getOtherUserIdByActivities($activity_id);
