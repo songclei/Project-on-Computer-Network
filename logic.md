@@ -28,3 +28,10 @@
       * 未参加者可以被添加为参加者或管理员
       * 参加者可以被添加为管理员或退出活动
       * 管理员可以被降为普通用户或退出活动
+      
+* 签到：当前活动开始时（begin_time）开放签到入口
+  * 在user_activity表中，加一列signin表示是否签到成功，初始化为0表示未签到，1表示已签到
+  * 在活动主页面上，首先检查该用户是否signin，如果signin在页面上（比如右上角）显示“签到成功！”，否则放一个二维码，二维码是网址 http://我们的IP/signin.php?activities_id=xxx 进行的编码。如果用户扫这个二维码，会跳转到这一个页面吧
+  * 在signin.php中，根据SESSION可以获得user_id，根据GET可以获得activity_id，然后调用签到函数（user_activity.php中）
+  * 在user_activity.php中，加一个函数表示签到，参数是据user_id和activity_id，可以找到这条记录并修改该记录的signin值为1
+  * 最后header跳转到活动主页面，此时主页面右上角应该显示的是“签到成功！”
