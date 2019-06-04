@@ -7,7 +7,7 @@
     <link href="/css/login.css" rel="stylesheet" type="text/css" media="all">
     <link href="/css/link.css" rel="stylesheet" type="text/css" media="all">
 
-	  <link rel="stylesheet" href="/html/assets/css/bootstrap.min.css" type="text/css" media="all">
+	<link rel="stylesheet" href="/html/assets/css/bootstrap.min.css" type="text/css" media="all">
     <link rel="stylesheet" href="/html/assets/css/lib/datatable/dataTables.bootstrap.min.css" type="text/css" media="all">
 
     <link rel="stylesheet" href="/html/assets/css/style.css" type="text/css" media="all">
@@ -15,78 +15,6 @@
     
 {%/block%}
 {%block name="title"%}<title>管理活动信息</title>{%/block%}
-
-{%block name="body" append%}
-<body>
-      <div class="container-fluid">
-        <div class="row">
-          <div style="position: absolute; margin-top:50px;">
-            <div class="col-md-3 sidebar">
-              <ul class="nav nav-sidebar" style="line-height:60px">
-                <li class="active"><a href="">信息修改</a></li>
-                <li class=""><a href="javascript:attendent_manage({%$activity_id%})">用户管理</a></li>
-                <li class=""><a href="javascript:info_export({%$activity_id%})">信息导出</a></li>
-                <li class=""><a href="">详细日程</a></li>
-             <!--后两个功能只做占位符用 可以再定-->
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="mid-class">
-        <div style="position: absolute; margin-left:100px;width:1100px;">
-           <div class="art-right-w3ls">
-              <form action="/php/activities/changeActivityInfo.php" method="post" name="registerForm">
-                <input type="hidden" name="activity_id" value={%$activity_id%}>
-                 <div class="main">
-                    <div class="form-left-to-w3l">
-                       <input type="text" id="name" name="name" placeholder="会议名称" autocomplete="off"required="">
-                    </div>
-                    <div class="form-left-to-w3l ">
-                        <input type="text" id="abbr" name="abbr" placeholder="会议简称" autocomplete="off" required=""> 
-                        <div class="clear"></div>   
-                    </div>
-                    <div class="form-group">
-                      <div class="form-left-to-w3l ">
-                          <input type="text" id="begin_date" name="begin_date" class="form-control" placeholder="开始时间" autocomplete="off" required="">  
-                          <div class="clear"></div>
-                      </div>
-                    </div>
-                    <div class="form-group">
-                      <div class="form-left-to-w3l ">
-                          <input type="text" id="end_date" name="end_date" class="form-control" placeholder="结束时间" autocomplete="off" required="">  
-                          <div class="clear"></div>
-                      </div>
-                    </div>
-                    <div class="form-left-to-w3l ">
-                        <input type="text" id="description" name="description" placeholder="会议介绍" autocomplete="off" required="">  
-                          <div class="clear"></div> 
-                    </div>
-                    <div class="form-left-to-w3l ">
-                        <input type="text" id="website_address" name="website_address" placeholder="会议网址" autocomplete="off" required=""> 
-                        <div class="clear"></div>   
-                    </div>
-                   </div>
-                 <div class="clear"></div>
-                 <div class="btnn">
-                  <div style="position: absolute; margin-left:550px;">
-                    <button type="submit" onclick="return checkActivity();">修改活动信息</button>
-                  </div>
-                 </div>
-              </form>
-              <div class="w3layouts_more-buttn">
-                <div style="position: absolute;margin-top:-20px;margin-left:590px;">
-                 <h3>
-                    <a href="/php/infoManager.php?activity_id={%$activity_id%}">重置信息
-                    </a>
-                 </h3>
-                </div>
-              </div>
-           </div>
-        </div>
-      </div>
-</body>
-{%/block%}
 
 {%block name="javascript"%}
 
@@ -100,6 +28,61 @@
                         format: "yyyy-mm-dd",
                         autoclose: true,
                         orientation: "bottom auto"
+    });
+
+    var statusActivityname = 0;
+    var statusTime = 0;
+
+    //检查开始时间是否早于结束时间
+    //name是否重名在提交后检查
+    function checkActivity(){
+        return checkActivityname() && checkTime();
+    }
+
+    function checkActivityname() {
+        if (statusActivityname) {
+            return true;
+        } else {
+            alert("已存在同名活动");
+            return false;
+        }
+    }
+
+    function checkTime() {
+        if (!statusTime) {
+            alert("开始时间不能晚于结束时间");
+            return false;
+        }
+        return true;
+    }
+
+    $(document).ready(function() {
+        $("#name").change(function() {
+            $(this).css("background-color", "#FFFFCC");
+            var name = document.getElementById("name").value;
+            $.get("../ajaxRequest/checkActivitynameUsed.php", {activityname: name}, function(msg) {
+                msg = $.trim(msg);
+                document.getElementById("name_alert").innerHTML = msg;
+                if (msg !== "") {
+                    statusActivityname = 0;
+                } else {
+                    statusActivityname = 1;
+                }
+            });
+        });
+
+        $("#begin_date, #end_date").change(function() {
+            var begindate = document.getElementById("begin_date");
+            var enddate = document.getElementById("end_date");
+            if (begindate.value !== "" && enddate.value !== "" && begindate.value > enddate.value) {
+                document.getElementById("date_alert").innerHTML = "开始时间不能晚于结束时间";
+                statusTime = 0;
+            }
+            else {
+                document.getElementById("date_alert").innerHTML = "";
+                statusTime = 1;
+            }
+        });
     });
 
     </script>
@@ -123,4 +106,100 @@
       } );
     </script>
 
+{%/block%}
+
+{%block name="body" append%}
+<body>
+      <div class="container-fluid">
+        <div class="row">
+          <div style="position: absolute; margin-top:50px;">
+            <div class="col-md-3 sidebar">
+              <ul class="nav nav-sidebar" style="line-height:60px">
+                <li class="active"><a href="">信息修改</a></li>
+                <li class=""><a href="javascript:attendent_manage({%$activity_id%})">用户管理</a></li>
+                <li class=""><a href="javascript:info_export({%$activity_id%})">信息导出</a></li>
+                <li class=""><a href="">详细日程</a></li>
+             <!--后两个功能只做占位符用 可以再定-->
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mid-class">
+        <div style="position: absolute; margin-left:100px;width:1100px;">
+           <div class="art-right-w3ls">
+              <form action="/php/activities/changeActivityInfo.php" method="post" name="registerForm" onsubmit="return checkActivity();">
+                <input type="hidden" name="activity_id" value={%$activity_id%}>
+                 <div class="main">
+                    <div class="form-left-to-w3l">
+                      <div style="line-height:11px">
+                       <div style="color: red; font-size: 3mm" id="name_alert"></div>
+                       <span style="font-family:'Times New Roman';">&emsp;</span><font color="grey" size="2px">{%$activity.name%}</font>
+                       <input type="text" id="name" name="name" placeholder="会议名称" autocomplete="off"required="">
+                    </div>
+                    </div>
+                    <div class="form-left-to-w3l ">
+                      <div style="line-height:11px">
+                       <span style="font-family:'Times New Roman';">&emsp;</span><font color="grey" size="2px">{%$activity.abbr%}</font>
+                        <input type="text" id="abbr" name="abbr" placeholder="会议简称" autocomplete="off" required=""> 
+                        <div class="clear"></div>   
+                    </div>
+                    </div>
+                    <div class="form-group">
+                      <div class="form-left-to-w3l ">
+                        <div style="line-height:11px">
+                         <span style="font-family:'Times New Roman';">&emsp;</span><font color="grey" size="2px">{%$activity.begin_date%}</font>
+                          <input type="text" id="begin_date" name="begin_date" class="form-control" placeholder="开始时间" autocomplete="off" required="">  
+                          <div class="clear"></div>
+                      </div>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <div class="form-left-to-w3l ">
+                        <div style="line-height:11px">
+                          <div style="color: red; font-size: 3mm" id="date_alert"></div>
+                           <span style="font-family:'Times New Roman';">&emsp;</span><font color="grey" size="2px" >{%$activity.end_date%}</font>
+                          <input type="text" id="end_date" name="end_date" class="form-control" placeholder="结束时间" autocomplete="off" required="">
+                          <div class="clear"></div>
+                      </div>
+                    </div>
+                    </div>
+                    <div class="form-left-to-w3l ">
+                      <div style="line-height:11px">
+                        {%if $activity.description != ""%}
+                       <span style="font-family:'Times New Roman';">&emsp;</span><font color="grey" size="2px">{%$activity.description%}</font>
+                       {%/if%}
+                        <input type="text" id="description" name="description" placeholder="会议介绍" autocomplete="off" required="">  
+                          <div class="clear"></div> 
+                    </div>
+                    </div>
+                    <div class="form-left-to-w3l ">
+                      <div style="line-height:11px">
+                       {%if $activity.website_address != ""%}
+                       <span style="font-family:'Times New Roman';">&emsp;</span><font color="grey" size="2px">{%$activity.website_address%}</font>
+                       {%/if%}
+                        <input type="text" id="website_address" name="website_address" placeholder="会议网址" autocomplete="off" required=""> 
+                        <div class="clear"></div>   
+                    </div>
+                    </div>
+                   </div>
+                 <div class="clear"></div>
+                 <div class="btnn">
+                  <div style="position: absolute; margin-left:550px;">
+                    <button type="submit" onclick="return checkActivity();">修改活动信息</button>
+                  </div>
+                 </div>
+              </form>
+              <div class="w3layouts_more-buttn">
+                <div style="position: absolute;margin-top:-20px;margin-left:590px;">
+                 <h3>
+                    <a href="/php/infoManager.php?activity_id={%$activity_id%}">重置信息
+                    </a>
+                 </h3>
+                </div>
+              </div>
+           </div>
+        </div>
+      </div>
+</body>
 {%/block%}

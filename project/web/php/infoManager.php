@@ -5,6 +5,9 @@
 
 	$activity_id = intval($_GET['activity_id']);
 	$smarty3->assign('activity_id', $activity_id);
+	$activity = getActivities(array("id" => $activity_id));
+	$activity_1 = $activity['list'][0];
+	$smarty3->assign('activity', $activity_1);
 
 	if (!empty($_SESSION['username'])) {
         $smarty3->assign('login', true);

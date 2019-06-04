@@ -147,6 +147,8 @@
         $sql = "update activities set";
         $name = $params['name'];
         $abbr = $params['abbr'];
+        $begin_date = $params['begin_date'];
+        $end_date = $params['end_date'];
         $description = $params['description'];
         $website_address = $params['website_address'];
         if (!empty($name))
@@ -157,17 +159,27 @@
         {
             $sql = $sql . " abbr = '$abbr',";
         }
+        if (!empty($begin_date))
+        {
+            $sql = $sql . " begin_date = '$begin_date',";
+        }
+        if (!empty($begin_date))
+        {
+            $sql = $sql . " end_date = '$end_date',";
+        }
         if (!empty($description))
         {
             $sql = $sql . " description = '$description',";
         }
-        if (!empty($webaddress))
+        if (!empty($website_address))
         {
             $sql = $sql . " website_address = '$website_address',";
         }
 
         $sql = substr($sql, 0, strlen($sql)-1);
         $sql = $sql . " where id = $activity_id";
+        #echo($sql);
+        #exit();
         $result = $conn->query($sql);
         if ($result === false) {
             $ret['err_msg'] = $conn->error;
