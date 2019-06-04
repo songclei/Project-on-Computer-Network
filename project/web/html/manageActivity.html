@@ -54,6 +54,10 @@
                                                 <span style="font-family:'Times New Roman';">&nbsp;&nbsp;&nbsp;&nbsp;</span>
                                                 <a href="javascript:delete_record({%$activity.id%}, {%$uid%})">退出</a>
                                                 <span style="font-family:'Times New Roman';">&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                                <a href="javascript:sign_in({%$activity.id%}, {%$uid%})">签到</a>
+                                                <input type="hidden" id="begin_date_{%$activity.id%}" value={%$activity.begin_date%}>
+                                                <input type="hidden" id="end_date_{%$activity.id%}" value={%$activity.end_date%}>
+                                                <span style="font-family:'Times New Roman';">&nbsp;&nbsp;&nbsp;&nbsp;</span>
                                                 <!--
                                                 {%if $activity.role == 1%}
                                                 <a href="javascript:delete_activity({%$activity.id%})">删除</a>
@@ -89,6 +93,65 @@
             if (confirm("确认退出此活动？")) {
                 window.location.href = "/php/user_activity/deleteRecord.php?activity_id=" + activity_id + "&user_id=" + user_id; 
             }
+        }
+
+        function sign_in(activity_id, user_id){
+            var begindate = document.getElementById("begin_date_"+activity_id);
+            var enddate = document.getElementById("end_date_"+activity_id);
+
+            //获取当前年月日
+
+            var date = new Date();
+            // 获取当前月份
+            var nowMonth = date.getMonth() + 1;
+            // 获取当前是几号
+            var strDate = date.getDate();
+            // 添加分隔符“-”
+            var seperator = "-";
+            // 对月份进行处理，1-9月在前面添加一个“0”
+            if (nowMonth >= 1 && nowMonth <= 9) {
+               nowMonth = "0" + nowMonth;
+            }
+            // 对月份进行处理，1-9号在前面添加一个“0”
+            if (strDate >= 0 && strDate <= 9) {
+               strDate = "0" + strDate;
+            }
+            // 最后拼接字符串，得到一个格式为(yyyy-MM-dd)的日期
+            var nowDate = new Date(Date.parse(date.getFullYear() + seperator + nowMonth + seperator + strDate));
+            //var nowDate2 = JSON.parse(nowDate);
+            var begin = new Date(Date.parse(begindate.value)); 
+            var end = new Date(Date.parse(enddate.value));
+            if(begin > nowDate){
+                alert("活动还未开始");
+                return false;
+            }
+            if(end < nowDate){
+                alert("活动已经结束");
+                return false;
+            }
+            window.location.href = "/php/user_activity/signIn.php?activity_id=" + activity_id + "&user_id=" + user_id; 
+            /*
+             $.ajax({
+                  url:'/php/user_activity/signIn.php?activity_id='+ activity_id + "&user_id=" + user_id,
+                  complete: function (response) {
+                    //alert(response);
+                    //return true;
+                      if(response.value == 1){
+                        alert("成功签到");
+                        return true;
+                      }
+                      else{
+                        alert("您已签到，请勿重复签到");
+                        return false;
+                      }
+                  },
+                  error: function () {
+                      alert("发生错误");
+                      return false;
+                  }
+              });
+            */
+              
         }
 
         function admin_manage_activity(activity_id){

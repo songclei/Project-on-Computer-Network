@@ -54,6 +54,7 @@
             $user['user_id'] = $row['user_id'];
             $user_id = $row['user_id'];
             $user['role'] = $row['role'];
+            $user['signin'] = $row['signin'];
             $sql = "select * from users where id = $user_id";
             $result_user = $conn->query($sql);
             while ($row_user = $result_user->fetch_assoc())
@@ -143,10 +144,61 @@
             die($conn->connect_error);
         }
         $result = $conn->query($sql);
+        if ($result === false || $result->num_rows === 0)
+            return 0;
+        return 1;
+    }
+
+    /**
+     * check whether user_id has already signed in activity_id
+     * @param $activity_id, $user_id
+     * @return 1 already sign in 0 not
+     */
+    function check_sign_in($activity_id, $user_id){
+        $sql = "select * from user_activity
+                where user_id = $user_id and activity_id = $activity_id and signin = 1";
+        $conn = new mysqli(SERVERNAME, USERNAME, PASSWORD, DBNAME);
+        if ($conn->connect_error) {
+            die($conn->connect_error);
+        }
         $result = $conn->query($sql);
         if ($result === false || $result->num_rows === 0)
             return 0;
         return 1;
+    }
+
+    /**
+     * let user_id sign into activity_id
+     * @param $activity_id, $user_id
+     * @return array
+     */
+    function add_sign_in($activity_id, $user_id){
+        $ret = array(
+            'status' => 1,
+            'err_msg' => ''
+        );
+        if (empty($activity_id)) {
+            $ret['err_msg'] = 'empty activity id';
+            return $ret;
+        }
+        if (empty($user_id)) {
+            $ret['err_msg'] = 'empty user id';
+            return $ret;
+        }
+        $conn = new mysqli(SERVERNAME, USERNAME, PASSWORD, DBNAME);
+        if ($conn->connect_error) {
+            die($conn->connect_error);
+        }
+        $sql = "update user_activity set signin = 1 where activity_id = $activity_id and user_id = $user_id";
+        $result = $conn->query($sql);
+        if ($result === false) {
+            $ret['err_msg'] = $conn->error;
+        } else {
+            $ret['status'] = 0;
+        }
+
+        $conn->close();
+        return $ret;
     }
 
     /**
@@ -318,4 +370,7 @@
         $conn->close();
         return $ret;
     }
+
+
+
     ?>

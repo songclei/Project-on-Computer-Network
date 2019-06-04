@@ -39,5 +39,7 @@ CREATE TABLE IF NOT EXISTS user_activity (
   FOREIGN KEY (activity_id) REFERENCES activities(id) 
 );
 
+ALTER TABLE user_activity ADD COLUMN signin int(10) DEFAULT 0 NOT NULL;
+
 commit;
 

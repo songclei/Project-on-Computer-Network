@@ -26,9 +26,9 @@
           <div class="col-md-3 sidebar">
             <ul class="nav nav-sidebar" style="line-height:60px">
              <li class=""><a href="javascript:info_manage({%$activity_id%})">信息修改</a></li>
-             <li class="active"><a href="">用户管理</a></li>
-             <li class=""><a href="javascript:signin_state({%$activity_id%})">签到情况</a></li>
-             <li class=""><a href="javascript:info_export({%$activity_id%}">信息导出</a></li>
+             <li class=""><a href="">用户管理</a></li>
+             <li class="active"><a href="">签到情况</a></li>
+             <li class=""><a href="javascript:info_export({%$activity_id%})">信息导出</a></li>
              <!--后两个功能只做占位符用 可以再定-->
             </ul>
           </div>
@@ -48,39 +48,31 @@
                             </div>
                             <div class="card-body">
                                 <table id="bootstrap-data-table" class="table table-striped table-bordered table-hover">
-                                    <span style="font-family:'Times New Roman';">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</span>
-                                    <a href="/php/attendentManager.php?activity_id={%$activity_id%}" style="color: rgba(31, 155, 212, 0.911);" class="login">所有用户</a>
+                                     <span style="font-family:'Times New Roman';">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</span>
+                                    <a href="/php/signInState.php?activity_id={%$activity_id%}" style="color: rgba(31, 155, 212, 0.911);" class="login">所有参加者</a>
                                     <span style="font-family:'Times New Roman';">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</span>
-                                    <a href="/php/attendentManager_manager.php?activity_id={%$activity_id%}" style="color: rgba(31, 155, 212, 0.911);" class="login">管理员</a>
+                                    <a href="" style="color: rgba(31, 155, 212, 0.911);" class="login">已签到</a>
                                     <span style="font-family:'Times New Roman';">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</span>
-                                    <a href="/php/attendentManager_participants.php?activity_id={%$activity_id%}" style="color: rgba(31, 155, 212, 0.911);" class="login">参加者</a>
-                                    <span style="font-family:'Times New Roman';">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</span>
-                                    <a href="" style="color: rgba(31, 155, 212, 0.911);" class="login">未参加</a>
+                                    <a href="/php/signInState_not_signed.php?activity_id={%$activity_id%}" style="color: rgba(31, 155, 212, 0.911);" class="login">未签到</a>
                                     <thead>
                                         <tr>
                                             <th>用户ID</th>
                                             <th>用户名</th>
-                                            <th>邮箱</th>
-                                            <th>状态</th>
-                                            <th>操作</th>
+                                            <th>签到状态</th>
                                         </tr>
                                     </thead>
                                     {%strip%}
                   <tbody>
-                    {%foreach $other_list as $user%}
+                    {%foreach $list as $user%}
+                            {%if $user.signin == 1%}
                                         <tr>
                                             <td>{%$user.user_id%}</td>
                                             <td>{%$user.username%}</td>
-                                            <td>{%$user.email%}</td>
-                                            <td>未参加</td>
                                             <td>
-                                                <a href="javascript:add_activity_user({%$activity_id%}, {%$user.user_id%})">添加为普通用户</a>
-                                                <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                                                <a href="javascript:add_activity_manager_nonparticipant({%$activity_id%},{%$user.user_id%})">添加为管理员</a>
-                                                <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                              已签到
                                             </td>
-                    </tr>
-                                        {%/foreach%}
+                                        {%/if%}
+                    {%/foreach%}
                   </tbody>
                                     {%/strip%}
                                 </table>
@@ -103,41 +95,6 @@
 			window.location.href = "/php/infoExport.php?activity_id=" + activity_id;
 		}
 
-        function signin_state(activity_id) {
-            window.location.href = "/php/signInState.php?activity_id=" + activity_id;
-        }
-        
-        function delete_record(activity_id, user_id) {
-            if (confirm("确认将此用户退出活动？")) {
-                window.location.href = "/php/user_activity/deleteRecordManager.php?activity_id=" + activity_id + "&user_id=" + user_id; 
-            }
-        }
-
-        //从参加者变为管理员
-        function add_activity_manager(activity_id, user_id) {
-            if (confirm("确认添加此用户为活动的管理员？")) {
-                window.location.href = "/php/user_activity/addActivityManager.php?activity_id=" + activity_id + "&user_id=" + user_id; 
-            }
-        }
-
-        //从未参加者直接变为管理员
-        function add_activity_manager_nonparticipant(activity_id, user_id) {
-            if (confirm("确认添加此用户为活动的管理员？")) {
-                window.location.href = "/php/user_activity/addActivityManagerNon.php?activity_id=" + activity_id + "&user_id=" + user_id; 
-            }
-        }
-
-        function add_activity_user(activity_id, user_id) {
-            if (confirm("确认添加此用户为活动的参加者？")) {
-                window.location.href = "/php/user_activity/addActivityUser.php?activity_id=" + activity_id + "&user_id=" + user_id; 
-            }
-        }
-
-        function cancel_activity_manager(activity_id, user_id) {
-            if (confirm("确认取消此用户为的管理员权限？")) {
-                window.location.href = "/php/user_activity/cancelActivityManager.php?activity_id=" + activity_id + "&user_id=" + user_id; 
-            }
-        }
     </script>
 
     <script src="/html/assets/js/lib/data-table/datatables.min.js"></script>

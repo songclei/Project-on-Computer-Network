@@ -94,6 +94,9 @@
         function info_export(activity_id) {
           window.location.href = "/php/infoExport.php?activity_id=" + activity_id;
         }
+        function signin_state(activity_id) {
+            window.location.href = "/php/signInState.php?activity_id=" + activity_id;
+        }
     </script>
 
     <script src="/html/assets/js/lib/data-table/datatables.min.js"></script>
@@ -117,8 +120,8 @@
               <ul class="nav nav-sidebar" style="line-height:60px">
                 <li class="active"><a href="">信息修改</a></li>
                 <li class=""><a href="javascript:attendent_manage({%$activity_id%})">用户管理</a></li>
+                <li class=""><a href="javascript:signin_state({%$activity_id%})">签到情况</a></li>
                 <li class=""><a href="javascript:info_export({%$activity_id%})">信息导出</a></li>
-                <li class=""><a href="">详细日程</a></li>
              <!--后两个功能只做占位符用 可以再定-->
               </ul>
             </div>
