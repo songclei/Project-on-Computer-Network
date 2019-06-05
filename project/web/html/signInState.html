@@ -26,7 +26,7 @@
           <div class="col-md-3 sidebar">
             <ul class="nav nav-sidebar" style="line-height:60px">
              <li class=""><a href="javascript:info_manage({%$activity_id%})">信息修改</a></li>
-             <li class=""><a href="">用户管理</a></li>
+             <li class=""><a href="javascript:attendent_manage({%$activity_id%})">用户管理</a></li>
              <li class="active"><a href="">签到情况</a></li>
              <li class=""><a href="javascript:info_export({%$activity_id%})">信息导出</a></li>
              <!--后两个功能只做占位符用 可以再定-->
@@ -96,6 +96,10 @@
 		function info_export(activity_id) {
 			window.location.href = "/php/infoExport.php?activity_id=" + activity_id;
 		}
+
+        function attendent_manage(activity_id){
+            window.location.href = "/php/attendentManager.php?activity_id=" + activity_id;
+        }
 
     </script>
 
